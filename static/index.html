@@ -981,7 +981,7 @@
   </div>
 
   <!-- GEMINI 3.1 PRO CHATBOT FLOATING LAUNCHER -->
-  <div id="chatbotLauncher" class="fixed bottom-6 right-6 z-40">
+  <div id="chatbotLauncher" class="fixed bottom-6 right-6 z-[99998]" style="z-index: 99998 !important;">
     <button onclick="toggleChatbotDrawer()" class="group flex items-center space-x-2.5 bg-gradient-to-r from-gov-700 via-indigo-700 to-gov-800 hover:from-gov-800 hover:to-indigo-900 text-white px-4 py-3 rounded-full shadow-2xl hover:shadow-indigo-500/25 transition-all transform hover:-translate-y-0.5 border border-white/20">
       <div class="relative flex items-center justify-center">
         <i data-lucide="bot" class="w-5 h-5 text-indigo-200 group-hover:rotate-12 transition-transform"></i>
@@ -1001,24 +1001,27 @@
   </div>
 
   <!-- GEMINI 3.1 PRO EXPANDABLE CHATBOT DRAWER -->
-  <div id="geminiChatbotDrawer" class="hidden fixed bottom-6 right-6 z-50 w-full sm:w-[540px] max-w-[calc(100vw-2rem)] bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden flex flex-col max-h-[85vh] h-[660px] animate-in fade-in zoom-in-95 duration-200">
+  <div id="geminiChatbotDrawer" class="hidden fixed bottom-6 right-6 z-[99999] w-full sm:w-[520px] max-w-[calc(100vw-2rem)] bg-white rounded-2xl shadow-2xl border border-slate-300 overflow-hidden flex flex-col max-h-[85vh] h-[660px] animate-in fade-in zoom-in-95 duration-200" style="z-index: 99999 !important;">
     
     <!-- Drawer Header -->
-    <div class="bg-slate-900 text-white px-4 py-3.5 flex items-center justify-between border-b border-slate-800 flex-shrink-0">
+    <div class="bg-slate-900 text-white px-4 py-3 flex items-center justify-between border-b border-slate-800 flex-shrink-0">
       <div class="flex items-center space-x-2.5">
-        <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-indigo-600 to-indigo-400 flex items-center justify-center shadow-inner">
-          <i data-lucide="sparkles" class="w-5 h-5 text-white"></i>
+        <div class="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center p-1 border border-white/20">
+          <img src="static/landlens_seal_exact.png" alt="LandLens AI" class="w-full h-full object-contain" />
         </div>
         <div>
           <div class="flex items-center space-x-2">
             <h3 class="text-sm font-bold text-white leading-tight">LandLens AI Assistant</h3>
             <span class="text-[10px] font-mono font-bold bg-indigo-500/30 text-indigo-300 border border-indigo-500/40 px-1.5 py-0.5 rounded">Gemini 3.1 Pro</span>
           </div>
-          <p class="text-[11px] text-slate-400 leading-tight">State Land Rates, Mega Projects &amp; Deed Intelligence</p>
+          <p class="text-[10px] text-slate-400 leading-tight">State Land Rates, Mega Projects &amp; Deed Intelligence</p>
         </div>
       </div>
       <div class="flex items-center space-x-1">
-        <button onclick="toggleChatbotDrawer()" class="p-1.5 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800 transition">
+        <button onclick="toggleChatbotDrawer()" title="Minimize / Close" class="p-1.5 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800 transition">
+          <i data-lucide="minus" class="w-4 h-4"></i>
+        </button>
+        <button onclick="toggleChatbotDrawer()" title="Close Assistant" class="p-1.5 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800 transition">
           <i data-lucide="x" class="w-4 h-4"></i>
         </button>
       </div>
@@ -1145,6 +1148,6 @@
   </footer>
 
   <!-- APPLICATION LOGIC SCRIPT -->
-  <script src="static/app.js"></script>
+  <script src="/static/app.js"></script>
 </body>
 </html>
