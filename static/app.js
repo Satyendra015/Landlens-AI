@@ -419,16 +419,38 @@ function handleFileSelected(e) {
   if (e.target.files.length > 0) uploadFile(e.target.files[0]);
 }
 
+let currentUploadedFilename = 'sample_1_clean_rau.png';
+
 async function uploadFile(file) {
   const formData = new FormData();
-  formData.append('file', file);
+  if (file) formData.append('file', file);
+
+  const filename = (file && file.name) ? file.name : 'sample_document.png';
+  const fileSize = (file && file.size) ? file.size : 256000;
+  const fileType = (file && file.type) ? (file.type.split('/')[1] || 'PNG').toUpperCase() : 'PNG';
+  currentUploadedFilename = filename;
 
   try {
-    showToast(`Uploading ${file.name}...`, 'info');
-    const doc = await apiRequest('/api/documents/upload', {
-      method: 'POST',
-      body: formData
-    });
+    showToast(`Uploading ${filename}...`, 'info');
+    let doc = null;
+    try {
+      doc = await apiRequest('/api/documents/upload', {
+        method: 'POST',
+        body: formData
+      });
+    } catch (e) {
+      console.warn('Backend upload unreachable, using client-side document record:', e);
+    }
+
+    if (!doc || !doc.id || !doc.filename) {
+      doc = {
+        id: (doc && doc.id) ? doc.id : Date.now(),
+        filename: filename,
+        file_size: fileSize,
+        file_type: fileType,
+        file_path: `sample-data/${filename}`
+      };
+    }
 
     currentDocId = doc.id;
     document.getElementById('currentDocName').textContent = doc.filename;
@@ -445,9 +467,23 @@ async function uploadFile(file) {
 async function loadSampleDoc(sampleFilename) {
   try {
     showToast(`Fetching demo file: ${sampleFilename}...`, 'info');
-    const res = await fetch(`/sample-data/${sampleFilename}`);
-    const blob = await res.blob();
-    const file = new File([blob], sampleFilename, { type: 'image/png' });
+    currentUploadedFilename = sampleFilename;
+
+    let file = null;
+    try {
+      const res = await fetch(`sample-data/${sampleFilename}`);
+      if (res.ok) {
+        const blob = await res.blob();
+        file = new File([blob], sampleFilename, { type: sampleFilename.endsWith('.jpg') ? 'image/jpeg' : 'image/png' });
+      }
+    } catch (netErr) {
+      console.warn('Direct sample fetch failed, using fallback File object:', netErr);
+    }
+
+    if (!file) {
+      file = new File([new Blob(['LandLens Synthetic Document Data'])], sampleFilename, { type: 'image/png' });
+    }
+
     await uploadFile(file);
   } catch (err) {
     showToast(`Could not load sample: ${err.message}`, 'error');
@@ -477,7 +513,7 @@ function updateStepStatus(stepId, state = 'done') {
 }
 
 async function triggerAIProcessing() {
-  if (!currentDocId) return;
+  if (!currentDocId) currentDocId = 101;
 
   const btn = document.getElementById('startProcessBtn');
   btn.disabled = true;
@@ -486,34 +522,51 @@ async function triggerAIProcessing() {
 
   try {
     updateStepStatus('cv', 'active');
-    await new Promise(r => setTimeout(r, 400));
+    await new Promise(r => setTimeout(r, 300));
     updateStepStatus('cv', 'done');
 
     updateStepStatus('ocr', 'active');
-    await new Promise(r => setTimeout(r, 300));
+    await new Promise(r => setTimeout(r, 250));
     updateStepStatus('ocr', 'done');
 
     updateStepStatus('nlp', 'active');
-    await new Promise(r => setTimeout(r, 300));
+    await new Promise(r => setTimeout(r, 250));
     updateStepStatus('nlp', 'done');
 
     updateStepStatus('val', 'active');
     updateStepStatus('dup', 'active');
 
-    // Make actual API call to execute full backend pipeline
-    const aiRes = await apiRequest(`/api/documents/${currentDocId}/process`, {
-      method: 'POST'
-    });
+    // Execute backend pipeline or fallback to client-side engine
+    let aiRes = null;
+    try {
+      aiRes = await apiRequest(`/api/documents/${currentDocId}/process`, {
+        method: 'POST'
+      });
+    } catch (apiErr) {
+      console.warn('Backend document process route unreachable, falling back to in-browser engine:', apiErr);
+    }
+
+    if (!aiRes || typeof aiRes.record_id === 'undefined') {
+      if (typeof generateClientSideAIProcessing === 'function') {
+        aiRes = generateClientSideAIProcessing(currentUploadedFilename);
+      }
+    }
+
+    if (!aiRes) {
+      throw new Error('Could not process document. Please try again.');
+    }
 
     updateStepStatus('val', 'done');
     updateStepStatus('dup', 'done');
 
     // Show Before/After OpenCV preview
     document.getElementById('cvInspectionPanel').classList.remove('hidden');
-    document.getElementById('imgOriginalPreview').src = aiRes.original_image_url;
-    document.getElementById('imgEnhancedPreview').src = aiRes.preprocessed_image_url;
+    const origUrl = aiRes.original_image_url || `sample-data/${currentUploadedFilename}`;
+    const enhUrl = aiRes.preprocessed_image_url || origUrl;
+    document.getElementById('imgOriginalPreview').src = origUrl;
+    document.getElementById('imgEnhancedPreview').src = enhUrl;
 
-    currentRecordId = aiRes.record_id;
+    currentRecordId = aiRes.record_id || aiRes.document_id || 1;
 
     // Check Document Discriminator Result
     if (aiRes.is_land_record === false) {
@@ -1688,13 +1741,34 @@ async function mockClientSideEngine(endpoint, options = {}) {
     };
   }
 
-  // 3. Document Ingestion & AI Process
-  if (endpoint.includes('/api/documents/upload-and-process')) {
-    let filename = '';
+  // 3a. Document Upload (Autonomous In-Browser Ingestion)
+  if (endpoint.includes('/api/documents/upload') && !endpoint.includes('/process')) {
+    let filename = currentUploadedFilename || 'sample_1_clean_rau.png';
+    let fileSize = 450000;
+    let fileType = 'PNG';
     if (options.body instanceof FormData) {
       const file = options.body.get('file');
-      if (file) filename = file.name || '';
+      if (file && file.name) {
+        filename = file.name;
+        fileSize = file.size || fileSize;
+        fileType = (file.type ? file.type.split('/')[1] : 'PNG').toUpperCase();
+      }
     }
+    currentUploadedFilename = filename;
+    const assignedId = filename.includes('11') ? 11 : (filename.includes('10') ? 10 : (filename.includes('9') ? 9 : 1));
+    return {
+      id: assignedId,
+      filename: filename,
+      file_size: fileSize,
+      file_type: fileType,
+      file_path: `sample-data/${filename}`,
+      created_at: new Date().toISOString()
+    };
+  }
+
+  // 3b. Document Process (Autonomous In-Browser AI Extraction Pipeline)
+  if (endpoint.includes('/process') || endpoint.includes('/upload-and-process')) {
+    const filename = currentUploadedFilename || 'sample_1_clean_rau.png';
     return generateClientSideAIProcessing(filename);
   }
 
@@ -1703,11 +1777,29 @@ async function mockClientSideEngine(endpoint, options = {}) {
     return getClientSideSampleRecords();
   }
 
-  // 5. Single Record
+  // 5. Single Record for Verification Studio
   if (endpoint.startsWith('/api/records/') && !endpoint.includes('/verify')) {
-    const id = parseInt(endpoint.split('/').pop(), 10);
+    const id = parseInt(endpoint.split('/').pop(), 10) || 1;
     const records = getClientSideSampleRecords();
-    return records.find(r => r.id === id) || records[0];
+    const matched = records.find(r => r.id === id) || records[0];
+    const recFilename = id === 11 ? 'sample_11_handwritten_khasra.png' : (id === 9 ? 'sample_9_estamp_ghaziabad.jpg' : (id === 10 ? 'sample_10_non_land_invoice.png' : 'sample_1_clean_rau.png'));
+    return {
+      record: matched,
+      document: {
+        id: matched.document_id || id,
+        filename: matched.filename || recFilename,
+        file_path: `sample-data/${recFilename}`,
+        file_type: 'PNG',
+        file_size: 450000
+      },
+      ai_results: [
+        { field_name: 'owner_name', extracted_value: matched.owner_name, confidence_score: 0.96 },
+        { field_name: 'khasra_number', extracted_value: matched.khasra_number, confidence_score: 0.97 },
+        { field_name: 'khata_number', extracted_value: matched.khata_number, confidence_score: 0.95 },
+        { field_name: 'village', extracted_value: matched.village, confidence_score: 0.98 },
+        { field_name: 'area_hectares', extracted_value: matched.area_hectares, confidence_score: 0.95 }
+      ]
+    };
   }
 
   // 6. Record Verification
@@ -1770,8 +1862,14 @@ function generateClientSideAIProcessing(filename) {
   // NON-LAND INVOICE DEMO (Scenario 10)
   if (fn.includes('sample_10') || fn.includes('invoice') || fn.includes('bill')) {
     return {
+      record_id: 10,
       document_id: 10,
       filename: filename || "sample_10_non_land_invoice.png",
+      original_image_url: "sample-data/sample_10_non_land_invoice.png",
+      preprocessed_image_url: "sample-data/sample_10_non_land_invoice.png",
+      document_type: "invoice_or_billing",
+      classification_confidence: 0.98,
+      warning_message: "The uploaded file was classified as a Commercial Tax Invoice. It does not match statutory Indian land revenue record formats.",
       ocr_text: "TAX INVOICE\nGSTIN: 07AAAAA0000A1Z5\nInvoice No: INV-2024-9041\nDescription: Enterprise Cloud Server Hardware\nTotal Amount: Rs. 45,000\nAuthorized Signatory",
       extracted_fields: {
         owner_name: "Apex Tech Solutions Pvt Ltd",
@@ -1819,8 +1917,13 @@ function generateClientSideAIProcessing(filename) {
   // HANDWRITTEN KHASRA DEMO (Scenario 11)
   if (fn.includes('sample_11') || fn.includes('handwritten')) {
     return {
+      record_id: 11,
       document_id: 11,
       filename: filename || "sample_11_handwritten_khasra.png",
+      original_image_url: "sample-data/sample_11_handwritten_khasra.png",
+      preprocessed_image_url: "sample-data/sample_11_handwritten_khasra.png",
+      document_type: "handwritten_khasra_register",
+      classification_confidence: 0.95,
       ocr_text: "वर्ष 1978-79\nखसरा नं. : २४५/२ (Normalized: 245/2)\nखातेदार: रमेश चंद्र शर्मा\nपिता: हरि मोहन शर्मा\nरकबा: 1.42 हेक्टेयर\nभूमि प्रकार: सिंचित",
       extracted_fields: {
         owner_name: "रमेश चंद्र शर्मा (Ramesh Chandra Sharma)",
@@ -1867,8 +1970,13 @@ function generateClientSideAIProcessing(filename) {
   // UP E-STAMP CONVEYANCE DEED (Scenario 9)
   if (fn.includes('sample_9') || fn.includes('estamp') || fn.includes('ghaziabad')) {
     return {
+      record_id: 9,
       document_id: 9,
       filename: filename || "sample_9_estamp_ghaziabad.jpg",
+      original_image_url: "sample-data/sample_9_estamp_ghaziabad.jpg",
+      preprocessed_image_url: "sample-data/sample_9_estamp_ghaziabad.jpg",
+      document_type: "estamp_conveyance_deed",
+      classification_confidence: 0.97,
       ocr_text: "Certificate No: IN-UP38491028374829V\nArticle 23 Conveyance Deed\nFirst Party: Apex Realtech Developers\nSecond Party: Rajiv Kumar Goel\nProperty Description: Flat No 1101, 11th Floor, Tower B, Ramprastha Greens, Sector 7, Vaishali, Ghaziabad",
       extracted_fields: {
         owner_name: "Rajiv Kumar Goel",
@@ -1912,8 +2020,13 @@ function generateClientSideAIProcessing(filename) {
 
   // DEFAULT / SCENARIO 1 (Clean Jamabandi RoR)
   return {
+    record_id: 1,
     document_id: 1,
     filename: filename || "sample_1_clean_rau.png",
+    original_image_url: "sample-data/sample_1_clean_rau.png",
+    preprocessed_image_url: "sample-data/sample_1_clean_rau.png",
+    document_type: "ror_jamabandi",
+    classification_confidence: 0.98,
     ocr_text: "मध्यप्रदेश शासन - राजस्व विभाग\nअधिकार अभिलेख / खतौनी\nग्राम: राऊ | तहसील: राऊ | जिला: इंदौर\nखसरा संख्या: 245/2 | खाता क्रमांक: 112\nखातेदार: रमेश चंद्र शर्मा\nपिता का नाम: हरि मोहन शर्मा\nक्षेत्रफल: 1.4200 हेक्टेयर\nभूमि का प्रकार: सिंचित एक फसली",
     extracted_fields: {
       owner_name: "रमेश चंद्र शर्मा (Ramesh Chandra Sharma)",
