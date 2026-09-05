@@ -1,0 +1,16 @@
+owner_name: Gopal Das
+father_name: Narayan Das
+khasra_number: 512/4
+khata_number: 39
+survey_number: SN-771
+plot_number: P-09
+village: Rau
+tehsil: Rau
+district: Indore
+state: Madhya Pradesh
+land_area: 1.80 Hectare
+land_type: Agricultural
+registration_number: MP-IND-2018-4421
+mutation_number: MUT-302
+document_number: DOC-JAMABANDI-04
+date: 10/04/2018

@@ -1,0 +1,16 @@
+Owner Name / मालिक का नाम : Sita Sharma
+Father's Name / पिता का नाम : Narayan Das
+Khasra Number / खसरा नं. : 318/1
+Khata Number / खाता नं. : 94
+Survey Number / सर्वे नं. : SN-402
+Plot Number / प्लॉट नं. : P-05
+Village / ग्राम : Kanadia
+Tehsil / तहसील : Kanadia
+District / जिला : Indore
+State / राज्य : Madhya Pradesh
+Land Area / रकबा : 2.10 Hectare
+Land Type / भूमि प्रकार : Agricultural (Non-Irrigated)
+Registration No / पंजीकरण क्रमांक : MP-IND-2022-7712
+Mutation No / नामांतरण क्रमांक : MUT-512
+Document No / दस्तावेज संख्या : DOC-KHATAUNI-02
+Date / दिनांक : 22/11/2022

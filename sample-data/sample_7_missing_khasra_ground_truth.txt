@@ -1,0 +1,16 @@
+owner_name: Vikram Sethi
+father_name: Harish Sethi
+khasra_number: 
+khata_number: 415
+survey_number: 
+plot_number: P-19
+village: Mangliya
+tehsil: Sanwer
+district: Indore
+state: Madhya Pradesh
+land_area: 0.95 Hectare
+land_type: Agricultural
+registration_number: MP-IND-2023-8871
+mutation_number: 
+document_number: DOC-INC-07
+date: 08/03/2023

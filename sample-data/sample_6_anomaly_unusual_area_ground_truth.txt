@@ -1,0 +1,16 @@
+owner_name: Kailash Chand
+father_name: Deepak Chand
+khasra_number: 409/1
+khata_number: 601
+survey_number: SN-339
+plot_number: P-88
+village: Kanadia
+tehsil: Kanadia
+district: Indore
+state: Madhya Pradesh
+land_area: 150.0 Hectare
+land_type: Commercial / Mixed
+registration_number: MP-IND-2023-5512
+mutation_number: MUT-761
+document_number: DOC-REG-06
+date: 19/09/2023
