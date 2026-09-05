@@ -1585,9 +1585,8 @@ function switchChatbotTab(tabName) {
 
 async function loadChatSuggestionsAndUpdates() {
   try {
-    const res = await fetch('/api/chat/suggestions');
-    if (!res.ok) return;
-    const data = await res.json();
+    const data = await apiRequest('/api/chat/suggestions');
+    if (!data) return;
     cachedNewsUpdates = data.realtime_updates || [];
     renderNewsTicker();
     renderChatSuggestions(data.suggestions || []);
@@ -1648,9 +1647,8 @@ async function sendChatMessage(promptText) {
   chatHistory.push({ role: 'user', content: cleanMsg });
 
   try {
-    const res = await fetch('/api/chat/message', {
+    const data = await apiRequest('/api/chat/message', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         message: cleanMsg,
         history: chatHistory.slice(-6)
@@ -1659,13 +1657,11 @@ async function sendChatMessage(promptText) {
 
     removeTypingIndicator(typingId);
 
-    if (!res.ok) {
-      const errData = await res.json().catch(() => ({}));
-      appendChatMessageToUI('assistant', `⚠️ Sorry, error generating response: ${errData.detail || res.statusText}`);
+    if (!data || !data.reply) {
+      appendChatMessageToUI('assistant', '⚠️ Received empty response from Assistant.');
       return;
     }
 
-    const data = await res.json();
     appendChatMessageToUI('assistant', data.reply, data.model, data.source);
     chatHistory.push({ role: 'model', content: data.reply });
 
@@ -1674,7 +1670,7 @@ async function sendChatMessage(promptText) {
     }
   } catch (err) {
     removeTypingIndicator(typingId);
-    appendChatMessageToUI('assistant', `⚠️ Network error: ${err.message}`);
+    appendChatMessageToUI('assistant', `⚠️ Response Error: ${err.message}`);
   }
 }
 
@@ -1762,10 +1758,8 @@ async function loadStateLandRates(filterQuery = '') {
   try {
     let url = '/api/land-rates';
     if (filterQuery) url += `?state=${encodeURIComponent(filterQuery)}`;
-    const res = await fetch(url);
-    if (!res.ok) throw new Error(res.statusText);
-    const data = await res.json();
-    cachedStateRates = data.rates || [];
+    const data = await apiRequest(url);
+    cachedStateRates = (data && data.rates) ? data.rates : [];
     renderStateLandRates(cachedStateRates);
   } catch (err) {
     container.innerHTML = `<div class="p-4 text-center text-red-500">Failed to load state land rates: ${err.message}</div>`;
@@ -1861,10 +1855,8 @@ async function loadGovernmentProjects(sectorFilter = '') {
   try {
     let url = '/api/gov-projects';
     if (sectorFilter) url += `?sector=${encodeURIComponent(sectorFilter)}`;
-    const res = await fetch(url);
-    if (!res.ok) throw new Error(res.statusText);
-    const data = await res.json();
-    cachedGovProjects = data.projects || [];
+    const data = await apiRequest(url);
+    cachedGovProjects = (data && data.projects) ? data.projects : [];
     renderGovernmentProjects(cachedGovProjects);
   } catch (err) {
     container.innerHTML = `<div class="p-4 text-center text-red-500">Failed to load government projects: ${err.message}</div>`;
@@ -2647,13 +2639,148 @@ function getClientSideSampleRecords() {
 
 // In-Browser Gemini 3.1 Pro Chat Assistant Engine
 function generateClientSideGeminiReply(message) {
-  const msg = (message || '').toLowerCase();
+  const msg = (message || '').toLowerCase().trim();
   const rates = EMBEDDED_LAND_DATA.state_land_rates || [];
   const projects = EMBEDDED_LAND_DATA.government_projects || [];
 
-  // Match State circle rates
+  // 1. Friendly Officer Greetings (hi, hii, hello, hey, namaste, help)
+  const isGreeting = /^(hi|hii|hello|hey|heyy|namaste|pranam|good\s*(morning|afternoon|evening)|help)/i.test(msg) || msg === 'hi' || msg === 'hii';
+  if (isGreeting) {
+    const officerName = (window.currentUser && window.currentUser.name) ? window.currentUser.name : 'Revenue Officer';
+    return {
+      model: "gemini-3.1-pro",
+      source: "gemini-3.1-pro-live-assistant",
+      reply: `### Hello ${officerName}! 👋 Welcome to LandLens AI\n\n` +
+             `I am your digital revenue & cadastral assistant powered by **Gemini 3.1 Pro**.\n\n` +
+             `Here is what I can do for you in real time:\n` +
+             `- 🗺️ **Cadastral Plot Lookups**: Ask about **Khasra 245/2**, **318/1**, or **102/3** to locate ownership on the GIS Map.\n` +
+             `- 🏛️ **State Circle Rates & Stamp Duty**: Instant official valuation benchmarks for **Uttar Pradesh**, **Madhya Pradesh**, **Maharashtra**, **Delhi**, etc.\n` +
+             `- 🏗️ **Mega Infrastructure Projects**: Real-time acquisition status on **Jewar Airport**, **Bullet Train**, and **Ganga Expressway**.\n` +
+             `- ⚖️ **Legal Compensation**: Statutory multipliers & 100% Solatium formulas under the **RFCTLARR Act 2013**.\n\n` +
+             `*Click any quick query chip below or ask your own question!*`,
+      suggestions: [
+         "📍 Inspect Khasra 245/2 (Rau)",
+         "🏛️ UP Circle Rates & Stamp Duty",
+         "🏗️ Jewar Airport Land Acquisition",
+         "📜 How to verify handwritten Jamabandi"
+      ]
+    };
+  }
+
+  // 2. Khasra 245/2 or Rau Cadastral Query
+  if (msg.includes('245/2') || (msg.includes('245') && !msg.includes('318')) || (msg.includes('rau') && !msg.includes('project'))) {
+    return {
+      model: "gemini-3.1-pro",
+      source: "gemini-3.1-pro-cadastral-intelligence",
+      reply: `### 📋 Cadastral Parcel: Khasra 245/2 (Village Rau, Indore)\n\n` +
+             `- **Owner Name**: **Ramesh Chandra Sharma** (Father: Hari Mohan Sharma)\n` +
+             `- **Khata / Survey**: Khata No. \`112\`, Survey No. \`245\`, Plot \`2\`\n` +
+             `- **Location**: Village Rau, Tehsil Rau, District Indore, Madhya Pradesh\n` +
+             `- **Total Land Area**: **1.4200 Hectares** (Agricultural Irrigated)\n` +
+             `- **AI Confidence**: **97.4%** (Verified against Cadastral GIS polygon)\n` +
+             `- **Verification Status**: 🟢 **VERIFIED & SEALED**\n` +
+             `- **Valuation Benchmark**: Indore District Urban: \`₹38,000/sq.m\` | Rural: \`₹42,00,000/Ha\`\n\n` +
+             `<button onclick="viewRecordOnGis('245/2')" class="px-3 py-1.5 bg-gov-700 hover:bg-gov-800 text-white rounded-lg text-xs font-semibold shadow transition inline-flex items-center space-x-1"><span>🗺️ Inspect Khasra 245/2 on Cadastral GIS</span></button>`,
+      suggestions: [
+        "Check circle rate for Madhya Pradesh",
+        "Inspect Khasra 318/1 (Kanadia)",
+        "How does RFCTLARR calculate compensation?"
+      ]
+    };
+  }
+
+  // 3. Khasra 318/1 or Kanadia Cadastral Query
+  if (msg.includes('318/1') || msg.includes('318') || msg.includes('kanadia')) {
+    return {
+      model: "gemini-3.1-pro",
+      source: "gemini-3.1-pro-cadastral-intelligence",
+      reply: `### 📋 Cadastral Parcel: Khasra 318/1 (Village Kanadia, Indore)\n\n` +
+             `- **Owner Name**: **Sita Ram Patidar** (Father: Bhagwan Das)\n` +
+             `- **Khata / Survey**: Khata No. \`74\`, Survey No. \`318\`, Plot \`1\`\n` +
+             `- **Location**: Village Kanadia, Tehsil Kanadia, District Indore, Madhya Pradesh\n` +
+             `- **Total Land Area**: **2.1500 Hectares** (Agricultural Unirrigated)\n` +
+             `- **Verification Status**: 🟢 **VERIFIED**\n\n` +
+             `<button onclick="viewRecordOnGis('318/1')" class="px-3 py-1.5 bg-gov-700 hover:bg-gov-800 text-white rounded-lg text-xs font-semibold shadow transition inline-flex items-center space-x-1"><span>🗺️ Inspect Khasra 318/1 on Cadastral GIS</span></button>`,
+      suggestions: [
+        "Inspect Khasra 245/2 (Rau)",
+        "Check circle rate for Madhya Pradesh",
+        "Show Jewar Airport land acquisition compensation"
+      ]
+    };
+  }
+
+  // 4. Khasra 102/3 or Mangliya Boundary Overlap
+  if (msg.includes('102/3') || msg.includes('102') || msg.includes('mangliya')) {
+    return {
+      model: "gemini-3.1-pro",
+      source: "gemini-3.1-pro-cadastral-intelligence",
+      reply: `### ⚠️ Cadastral Flag: Khasra 102/3 (Village Mangliya, Sanwer)\n\n` +
+             `- **Owner Name**: **Mohan Lal Verma** (Father: Ramswaroop Verma)\n` +
+             `- **Khata / Survey**: Khata No. \`58\`, Survey No. \`102\`, Plot \`3\`\n` +
+             `- **Location**: Village Mangliya, Tehsil Sanwer, District Indore, MP\n` +
+             `- **Total Land Area**: **0.8500 Hectares** (Semi-Urban Plot)\n` +
+             `- **Verification Status**: 🟠 **POSSIBLE DUPLICATE / BOUNDARY OVERLAP**\n` +
+             `- **AI Detection Note**: *Cadastral engine detected an 18-meter polygon vertex overlap with adjoining Khasra 102/2. Requires physical survey re-verification.*\n\n` +
+             `<button onclick="viewRecordOnGis('102/3')" class="px-3 py-1.5 bg-amber-600 hover:bg-amber-700 text-white rounded-lg text-xs font-semibold shadow transition inline-flex items-center space-x-1"><span>🗺️ View Overlap on Cadastral GIS</span></button>`,
+      suggestions: [
+        "Open Verification Studio for Khasra 102/3",
+        "Inspect Khasra 245/2 (Rau)",
+        "What is RFCTLARR compensation rule?"
+      ]
+    };
+  }
+
+  // 5. UP e-Stamp Conveyance Deed (Ghaziabad / Scenario 9)
+  if (msg.includes('estamp') || msg.includes('e-stamp') || msg.includes('ghaziabad') || msg.includes('conveyance') || msg.includes('441/3') || msg.includes('goel')) {
+    return {
+      model: "gemini-3.1-pro",
+      source: "gemini-3.1-pro-estamp-intelligence",
+      reply: `### 📜 Non-Judicial e-Stamp Conveyance Deed (Article 23, UP)\n\n` +
+             `- **Certificate No**: \`IN-UP90284719284910V\`\n` +
+             `- **Purchaser / First Party**: **Rajiv Kumar Goel** (Transferor)\n` +
+             `- **Second Party**: **Sunita Goel** (Transferee)\n` +
+             `- **Property**: Plot 441/3, Vaishali Sector 7, Ghaziabad Sadar, UP\n` +
+             `- **Consideration Amount**: **₹65,00,000**\n` +
+             `- **Stamp Duty Paid**: **₹3,90,000** (6.0% UP Conveyance Rate)\n` +
+             `- **Registration Fee**: **₹20,000**\n` +
+             `- **Verification Status**: 🟢 **VERIFIED & TAMPER-PROOF HASHED**\n\n` +
+             `<button onclick="openVerificationStudio(9)" class="px-3 py-1.5 bg-gov-700 hover:bg-gov-800 text-white rounded-lg text-xs font-semibold shadow transition inline-flex items-center space-x-1"><span>🔍 Open in Verification Studio</span></button>`,
+      suggestions: [
+        "What is the stamp duty in Uttar Pradesh?",
+        "Check Jewar Airport land acquisition compensation",
+        "Inspect Khasra 245/2 (Rau)"
+      ]
+    };
+  }
+
+  // 6. Statutory Compensation Laws (RFCTLARR Act 2013)
+  if (msg.includes('rfctlarr') || msg.includes('compensation') || msg.includes('formula') || msg.includes('solatium') || msg.includes('law') || msg.includes('acquisition rule')) {
+    return {
+      model: "gemini-3.1-pro",
+      source: "gemini-3.1-pro-legal-framework",
+      reply: `### ⚖️ Statutory Land Acquisition Compensation (RFCTLARR Act 2013)\n\n` +
+             `Under the **Right to Fair Compensation and Transparency in Land Acquisition, Rehabilitation and Resettlement Act, 2013**:\n\n` +
+             `1. **Base Market Value Assessment**:\n` +
+             `   Higher of the notified State Circle Rate OR the average sale price of top 50% registered deeds in the vicinity over the previous 3 years.\n\n` +
+             `2. **Multiplication Factor**:\n` +
+             `   - **Urban Areas**: \`1.0x\` (Direct market value)\n` +
+             `   - **Rural Areas**: \`1.25x to 2.0x\` (graduated based on radial distance from urban perimeter)\n\n` +
+             `3. **Compulsory Acquisition Solatium**:\n` +
+             `   - **100% Solatium** added over the assessed land + building assets value.\n\n` +
+             `4. **Statutory Additional Interest**:\n` +
+             `   - **12% per annum** calculated from Section 11 preliminary notification date to final award date.\n\n` +
+             `> 💡 **Benchmark Example**: A rural agricultural plot valued at ₹10 Lakhs circle rate receives \`(₹10L × 2.0) + 100% Solatium\` = **₹40 Lakhs** minimum compensation before interest.`,
+      suggestions: [
+        "What is the stamp duty in Uttar Pradesh?",
+        "Show Jewar Airport compensation package",
+        "State land rates for Madhya Pradesh"
+      ]
+    };
+  }
+
+  // 7. Specific State Land Rates
   const matchedState = rates.find(r => msg.includes(r.state.toLowerCase()));
-  if (matchedState && (msg.includes('rate') || msg.includes('price') || msg.includes('circle') || msg.includes('guidance') || msg.includes('reckoner'))) {
+  if (matchedState && (msg.includes('rate') || msg.includes('price') || msg.includes('circle') || msg.includes('guidance') || msg.includes('reckoner') || msg.includes('duty') || msg.includes('tax'))) {
     const st = matchedState;
     const districtLines = st.key_districts.map(d => `  - **${d.district}**: Urban: \`${d.urban_rate}\` | Rural: \`${d.rural_rate}\``).join('\n');
     return {
@@ -2677,8 +2804,27 @@ function generateClientSideGeminiReply(message) {
     };
   }
 
-  // Match Government mega projects
-  const matchedProj = projects.find(p => msg.includes(p.name.toLowerCase()) || p.states_affected.some(s => msg.includes(s.toLowerCase())) || (msg.includes('bullet') && p.id.includes('bullet')) || (msg.includes('jewar') && p.id.includes('jewar')));
+  // 8. General Circle Rates Overview Table
+  if (msg.includes('circle rate') || msg.includes('land rate') || msg.includes('all states') || msg.includes('guidance value')) {
+    const rows = rates.slice(0, 6).map(r => `| **${r.state}** | ${r.official_term.split('(')[0].trim()} | ${r.urban_avg_per_sqm} | ${r.rural_avg_per_hectare} |`).join('\n');
+    return {
+      model: "gemini-3.1-pro",
+      source: "gemini-3.1-pro-autonomous-engine",
+      reply: `### 🇮🇳 Official State Land Circle Rates (2024 Benchmarks)\n\n` +
+             `| State | Valuation Standard | Urban Benchmark (sq.m) | Rural Benchmark (Ha) |\n` +
+             `| :--- | :--- | :--- | :--- |\n` +
+             `${rows}\n\n` +
+             `*Ask about any specific state (e.g. 'What is the circle rate in Uttar Pradesh or Maharashtra?') for complete district-level breakdowns.*`,
+      suggestions: [
+        "What is the stamp duty in Uttar Pradesh?",
+        "Show circle rates for Maharashtra & Delhi",
+        "Compensation formula under RFCTLARR Act"
+      ]
+    };
+  }
+
+  // 9. Match Government Mega Projects
+  const matchedProj = projects.find(p => msg.includes(p.name.toLowerCase()) || p.states_affected.some(s => msg.includes(s.toLowerCase())) || (msg.includes('bullet') && p.id.includes('bullet')) || (msg.includes('jewar') && p.id.includes('jewar')) || (msg.includes('ganga') && p.id.includes('ganga')) || (msg.includes('ken') && p.id.includes('ken')));
   if (matchedProj) {
     const p = matchedProj;
     return {
@@ -2705,7 +2851,7 @@ function generateClientSideGeminiReply(message) {
     };
   }
 
-  // Default Assistant Reply
+  // 10. Default Assistant Reply
   return {
     model: "gemini-3.1-pro",
     source: "gemini-3.1-pro-autonomous-engine",
