@@ -31,7 +31,7 @@ const FIELD_DEFINITIONS = [
 ];
 
 // Initialize on page load
-document.addEventListener('DOMContentLoaded', async () => {
+async function initializeApp() {
   if (window.lucide) lucide.createIcons();
   
   if (authToken) {
@@ -52,7 +52,13 @@ document.addEventListener('DOMContentLoaded', async () => {
     updateAuthUI();
     navigate('login');
   }
-});
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initializeApp);
+} else {
+  initializeApp();
+}
 
 // Navigation Router
 function handleLogoClick() {

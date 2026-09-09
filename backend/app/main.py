@@ -80,6 +80,17 @@ if os.path.exists(sample_docs_dir):
 static_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "static"))
 os.makedirs(static_dir, exist_ok=True)
 
+@app.get("/api/health")
+def health_check():
+    return {"status": "ok", "service": "LandLens AI"}
+
+@app.get("/app.js")
+def serve_app_js():
+    js_file = os.path.join(static_dir, "app.js")
+    if os.path.exists(js_file):
+        return FileResponse(js_file, media_type="application/javascript")
+    return {"error": "app.js not found"}
+
 @app.get("/")
 def serve_index():
     index_file = os.path.join(static_dir, "index.html")
