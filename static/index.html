@@ -1137,27 +1137,24 @@
   </div>
 
   <!-- GEMINI 3.1 PRO CHATBOT FLOATING LAUNCHER -->
-  <div id="chatbotLauncher" class="fixed bottom-6 right-6 z-[99998]" style="z-index: 99998 !important;">
-    <button onclick="toggleChatbotDrawer()" class="group flex items-center space-x-2.5 bg-gradient-to-r from-gov-700 via-indigo-700 to-gov-800 hover:from-gov-800 hover:to-indigo-900 text-white px-4 py-3 rounded-full shadow-2xl hover:shadow-indigo-500/25 transition-all transform hover:-translate-y-0.5 border border-white/20">
+  <div id="chatbotLauncher" class="fixed bottom-5 right-5 z-[99998]" style="z-index: 99998 !important;">
+    <button onclick="toggleChatbotDrawer()" class="group flex items-center space-x-2 bg-gradient-to-r from-gov-700 via-indigo-700 to-gov-800 hover:from-gov-800 hover:to-indigo-900 text-white px-3.5 py-2 rounded-full shadow-xl hover:shadow-indigo-500/25 transition-all transform hover:-translate-y-0.5 border border-white/20">
       <div class="relative flex items-center justify-center">
-        <i data-lucide="bot" class="w-5 h-5 text-indigo-200 group-hover:rotate-12 transition-transform"></i>
-        <span class="absolute -top-1 -right-1 flex h-2.5 w-2.5">
+        <i data-lucide="bot" class="w-4 h-4 text-indigo-200 group-hover:rotate-12 transition-transform"></i>
+        <span class="absolute -top-0.5 -right-0.5 flex h-2 w-2">
           <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-          <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+          <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
         </span>
       </div>
-      <div class="text-left hidden sm:block">
-        <div class="text-xs font-bold leading-tight flex items-center space-x-1">
-          <span>Gemini 3.1 Pro</span>
-          <span class="px-1.5 py-0.2 text-[9px] uppercase font-bold bg-white/20 rounded text-indigo-100">Live</span>
-        </div>
-        <div class="text-[10px] text-indigo-200 leading-tight">Land Rates &amp; Projects AI</div>
+      <div class="text-left hidden sm:flex items-center space-x-1.5">
+        <span class="text-xs font-bold leading-tight">Gemini AI</span>
+        <span class="px-1.5 py-0.2 text-[8px] uppercase font-bold bg-emerald-500/20 text-emerald-300 rounded border border-emerald-500/30">Live</span>
       </div>
     </button>
   </div>
 
   <!-- GEMINI 3.1 PRO EXPANDABLE CHATBOT DRAWER -->
-  <div id="geminiChatbotDrawer" class="hidden fixed bottom-6 right-6 z-[99999] w-full sm:w-[520px] max-w-[calc(100vw-2rem)] bg-white rounded-2xl shadow-2xl border border-slate-300 overflow-hidden flex flex-col max-h-[85vh] h-[660px] animate-in fade-in zoom-in-95 duration-200" style="z-index: 99999 !important;">
+  <div id="geminiChatbotDrawer" class="hidden fixed bottom-5 right-5 z-[99999] w-[360px] sm:w-[380px] max-w-[calc(100vw-1.5rem)] bg-white rounded-2xl shadow-2xl border border-slate-300 overflow-hidden flex flex-col max-h-[78vh] h-[520px] animate-in fade-in zoom-in-95 duration-200" style="z-index: 99999 !important;">
     
     <!-- Drawer Header -->
     <div class="bg-slate-900 text-white px-4 py-3 flex items-center justify-between border-b border-slate-800 flex-shrink-0">

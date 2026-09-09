@@ -164,7 +164,7 @@ class TesseractProvider(BaseOCREngine):
 
 class PDFTextProvider(BaseOCREngine):
     """
-    Direct digital PDF text extraction engine.
+    Direct digital PDF text extraction engine with fallback to scanned page image OCR.
     """
     def is_available(self) -> bool:
         try:
@@ -177,22 +177,44 @@ class PDFTextProvider(BaseOCREngine):
         import pypdf
         reader = pypdf.PdfReader(pdf_path)
         extracted_text = []
-        for page in reader.pages:
+        regions = []
+        line_idx = 0
+
+        for p_no, page in enumerate(reader.pages):
             t = page.extract_text()
-            if t:
+            if t and t.strip():
                 extracted_text.append(t)
+                for line in t.split("\n"):
+                    if line.strip():
+                        regions.append(OCRRegion(line.strip(), [10, line_idx * 25, 500, 20], 0.98))
+                        line_idx += 1
+            elif hasattr(page, "images") and len(page.images) > 0:
+                try:
+                    import cv2
+                    import numpy as np
+                    from rapidocr_onnxruntime import RapidOCR
+                    ocr = RapidOCR()
+                    for img_file in page.images:
+                        nparr = np.frombuffer(img_file.data, np.uint8)
+                        img_cv = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
+                        if img_cv is not None:
+                            res, _ = ocr(img_cv)
+                            if res:
+                                for item in res:
+                                    box, text, score = item[0], item[1], item[2]
+                                    if text and text.strip():
+                                        extracted_text.append(text.strip())
+                                        regions.append(OCRRegion(text.strip(), [int(box[0][0]), int(box[0][1]), int(box[1][0] - box[0][0]), int(box[2][1] - box[0][1])], float(score)))
+                                        line_idx += 1
+                except Exception as ex:
+                    print(f"[PDFTextProvider] Scanned page OCR error on page {p_no}: {ex}")
 
         raw = "\n".join(extracted_text)
-        regions = [
-            OCRRegion(line.strip(), [10, idx * 25, 500, 20], 0.98)
-            for idx, line in enumerate(raw.split("\n"))
-            if line.strip()
-        ]
         return OCRResult(
             raw_text=raw,
             regions=regions,
             average_confidence=0.97 if raw else 0.0,
-            engine_used="PDF Direct Stream Extractor",
+            engine_used="PDF Direct Stream + Scanned Extractor",
         )
 
 

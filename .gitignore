@@ -45,3 +45,5 @@ Thumbs.db
 scratch_*
 backend/scripts/logo_test/
 *.zip
+ 
+.github/

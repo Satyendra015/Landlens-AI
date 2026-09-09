@@ -1769,10 +1769,12 @@ let currentProjectFilter = '';
 
 function toggleChatbotDrawer() {
   const drawer = document.getElementById('geminiChatbotDrawer');
+  const launcher = document.getElementById('chatbotLauncher');
   if (!drawer) return;
   const isHidden = drawer.classList.contains('hidden');
   if (isHidden) {
     drawer.classList.remove('hidden');
+    if (launcher) launcher.classList.add('hidden');
     if (cachedNewsUpdates.length === 0) {
       loadChatSuggestionsAndUpdates();
     }
@@ -1788,6 +1790,7 @@ function toggleChatbotDrawer() {
     }, 150);
   } else {
     drawer.classList.add('hidden');
+    if (launcher) launcher.classList.remove('hidden');
   }
   if (window.lucide) lucide.createIcons();
 }
