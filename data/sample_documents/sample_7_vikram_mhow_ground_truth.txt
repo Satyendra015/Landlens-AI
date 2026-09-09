@@ -1,0 +1,16 @@
+Owner Name / मालिक का नाम : Vikram Rathore
+Father's Name / पिता का नाम : Pratap Singh
+Khasra Number / खसरा नं. : 144/3
+Khata Number / खाता नं. : 88
+Survey Number / सर्वे नं. : SN-772
+Plot Number / प्लॉट नं. : P-31
+Village / ग्राम : Mhow
+Tehsil / तहसील : Mhow
+District / जिला : Indore
+State / राज्य : Madhya Pradesh
+Land Area / रकबा : 4.20 Hectare
+Land Type / भूमि प्रकार : Agricultural (Non-Irrigated)
+Registration No / पंजीकरण क्रमांक : MP-IND-2023-1120
+Mutation No / नामांतरण क्रमांक : MUT-219
+Document No / दस्तावेज संख्या : DOC-ROR-07
+Date / दिनांक : 29/07/2023

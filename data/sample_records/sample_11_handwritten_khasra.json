@@ -1,0 +1,26 @@
+{
+  "filename": "sample_11_handwritten_khasra.png",
+  "title": "MADHYA PRADESH - HANDWRITTEN DEVANAGARI KHASRA",
+  "is_land_record": true,
+  "document_type": "jamabandi_ror",
+  "fields": {
+    "owner_name": "राम कुमार",
+    "father_name": "श्याम लाल",
+    "khasra_number": "245/2",
+    "khata_number": "112",
+    "survey_number": "882",
+    "plot_number": "12",
+    "village": "राऊ",
+    "tehsil": "राऊ",
+    "district": "इंदौर",
+    "state": "Madhya Pradesh",
+    "land_area": "1.25 Hectare",
+    "land_type": "कृषि सिंचित",
+    "registration_number": "MP-IND-2023-9901",
+    "mutation_number": "441",
+    "document_number": "DOC-HANDWRITTEN-11",
+    "date": "14/08/2023"
+  },
+  "expected_confidence": "HIGH",
+  "expected_status": "verified"
+}

@@ -1,0 +1,24 @@
+{
+  "filename": "sample_5_anita_lucknow.png",
+  "title": "UTTAR PRADESH - LUCKNOW KHATAUNI (CH-41)",
+  "fields": {
+    "owner_name": "Anita Verma",
+    "father_name": "Rameshwar",
+    "khasra_number": "512/2",
+    "khata_number": "180",
+    "survey_number": "SN-255",
+    "plot_number": "P-09",
+    "village": "Mohanlalganj",
+    "tehsil": "Mohanlalganj",
+    "district": "Lucknow",
+    "state": "Uttar Pradesh",
+    "land_area": "1.75 Hectare",
+    "land_type": "Agricultural (Irrigated)",
+    "registration_number": "UP-LKO-2023-8821",
+    "mutation_number": "MUT-761",
+    "document_number": "DOC-KHATAUNI-05",
+    "date": "10/09/2023"
+  },
+  "expected_confidence": "HIGH",
+  "expected_status": "verified"
+}

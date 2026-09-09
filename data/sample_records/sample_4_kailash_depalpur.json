@@ -1,0 +1,24 @@
+{
+  "filename": "sample_4_kailash_depalpur.png",
+  "title": "MADHYA PRADESH - DEPALPUR RECORD OF RIGHTS",
+  "fields": {
+    "owner_name": "Kailash Choudhary",
+    "father_name": "Babulal",
+    "khasra_number": "415/1",
+    "khata_number": "220",
+    "survey_number": "SN-630",
+    "plot_number": "P-18",
+    "village": "Depalpur",
+    "tehsil": "Depalpur",
+    "district": "Indore",
+    "state": "Madhya Pradesh",
+    "land_area": "3.40 Hectare",
+    "land_type": "Agricultural (Irrigated)",
+    "registration_number": "MP-IND-2023-4491",
+    "mutation_number": "MUT-302",
+    "document_number": "DOC-ROR-04",
+    "date": "18/06/2023"
+  },
+  "expected_confidence": "HIGH",
+  "expected_status": "verified"
+}

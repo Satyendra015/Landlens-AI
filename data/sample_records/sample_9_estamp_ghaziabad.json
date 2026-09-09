@@ -1,0 +1,24 @@
+{
+  "filename": "sample_9_estamp_ghaziabad.jpg",
+  "title": "UTTAR PRADESH - GHAZIABAD ARTICLE 23 CONVEYANCE DEED E-STAMP",
+  "fields": {
+    "owner_name": "Pankaj Tyagi and Amrita Tyagi",
+    "father_name": "Kiran Verma GPA Holder of Pinky Sehdev",
+    "khasra_number": "Sec-7 Ramprastha Greens",
+    "khata_number": "Flat No 1101",
+    "survey_number": "IN-UP76993801475378T",
+    "plot_number": "Flat 1101",
+    "village": "Vaishali Extn",
+    "tehsil": "Ghaziabad",
+    "district": "Ghaziabad",
+    "state": "Uttar Pradesh",
+    "land_area": "Flat No 1101 11th Floor",
+    "land_type": "Article 23 Conveyance",
+    "registration_number": "IN-UP76993801475378T",
+    "mutation_number": "up14000104",
+    "document_number": "SUBIN-UPUP1400010441539040014220T",
+    "date": "01/06/2021"
+  },
+  "expected_confidence": "HIGH",
+  "expected_status": "verified"
+}

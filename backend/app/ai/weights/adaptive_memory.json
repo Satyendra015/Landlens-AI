@@ -1,0 +1,177 @@
+{
+  "version": "1.2.0",
+  "last_adapted_at": "2026-09-09T22:49:11Z",
+  "total_adapted_documents": 100,
+  "anchor_exemplars": [
+    {
+      "text": "GOVERNMENT OF MADHYA PRADESH - REVENUE DEPARTMENT\nRECORD OF RIGHTS / अधिकार अभिलेख जमाबंदी\nOwner Name / मालिक का नाम : Ram Kumar\nFather's Name / पिता का नाम : Shyam Lal\nKhasra Number / खसरा नं. : 245/2\nKhata Number / खाता नं. : 112\nSurvey Number / सर्वे नं. : SN-882\nPlot Number / प्लॉट नं. : P-12\nVillage / ग्राम : Rau\nTehsil / तहसील : Rau\nDistrict / जिला : Indore\nState / राज्य : Madhya Pradesh\nLand Area / रकबा : 1.25 Hectare\nLand Type / भूमि प्रकार : Agricultural (Irrigated)\nRegistration No / पंजीकरण क्रमांक : MP-IND-2023-9901\nMutation No / नामांतरण क्रमांक : MUT-441\nDocument No / दस्तावेज संख्या : DOC-JAMABANDI-01\nDate / दिनांक : 14/08/2023",
+      "entities": {
+        "owner_name": "Ram Kumar",
+        "father_name": "Shyam Lal",
+        "khasra_number": "245/2",
+        "khata_number": "112",
+        "survey_number": "SN-882",
+        "plot_number": "P-12",
+        "village": "Rau",
+        "tehsil": "Rau",
+        "district": "Indore",
+        "state": "Madhya Pradesh",
+        "land_area": "1.25 Hectare",
+        "land_type": "Agricultural (Irrigated)",
+        "registration_number": "MP-IND-2023-9901",
+        "mutation_number": "MUT-441",
+        "document_number": "DOC-JAMABANDI-01",
+        "date": "14/08/2023"
+      },
+      "type": "jamabandi_ror"
+    },
+    {
+      "text": "GOVERNMENT OF MADHYA PRADESH - REVENUE DEPARTMENT\nKHATONI NAKAL / खतौनी नकल\nOwner Name / मालिक का नाम : Sita Sharma\nFather's Name / पिता का नाम : Rameshwar Sharma\nKhasra Number / खसरा नं. : 318/1\nKhata Number / खाता नं. : 207\nSurvey Number / सर्वे नं. : SN-402\nPlot Number / प्लॉट नं. : P-04\nVillage / ग्राम : Kanadia\nTehsil / तहसील : Kanadia\nDistrict / जिला : Indore\nState / राज्य : Madhya Pradesh\nLand Area / रकबा : 2.10 Hectare\nLand Type / भूमि प्रकार : Agricultural (Non-Irrigated)\nRegistration No / पंजीकरण क्रमांक : MP-IND-2022-8104\nMutation No / नामांतरण क्रमांक : MUT-129\nDocument No / दस्तावेज संख्या : DOC-JAMABANDI-02\nDate / दिनांक : 05/11/2022",
+      "entities": {
+        "owner_name": "Sita Sharma",
+        "father_name": "Rameshwar Sharma",
+        "khasra_number": "318/1",
+        "khata_number": "207",
+        "survey_number": "SN-402",
+        "plot_number": "P-04",
+        "village": "Kanadia",
+        "tehsil": "Kanadia",
+        "district": "Indore",
+        "state": "Madhya Pradesh",
+        "land_area": "2.10 Hectare",
+        "land_type": "Agricultural (Non-Irrigated)",
+        "registration_number": "MP-IND-2022-8104",
+        "mutation_number": "MUT-129",
+        "document_number": "DOC-JAMABANDI-02",
+        "date": "05/11/2022"
+      },
+      "type": "khatauni"
+    },
+    {
+      "text": "GOVERNMENT OF UTTAR PRADESH - REVENUE DEPARTMENT\nRECORD OF RIGHTS / अधिकार अभिलेख जमाबंदी\nOwner Name / मालिक का नाम : Anita Yadav\nFather's Name / पिता का नाम : Suresh Yadav\nKhasra Number / खसरा नं. : 520/1\nKhata Number / खाता नं. : 188\nSurvey Number / सर्वे नं. : SN-610\nPlot Number / प्लॉट नं. : P-55\nVillage / ग्राम : Malihabad\nTehsil / तहसील : Malihabad\nDistrict / जिला : Lucknow\nState / राज्य : Uttar Pradesh\nLand Area / रकबा : 1.75 Bigha\nLand Type / भूमि प्रकार : Agricultural (Irrigated)\nRegistration No / पंजीकरण क्रमांक : UP-LKO-2023-4122\nMutation No / नामांतरण क्रमांक : MUT-810\nDocument No / दस्तावेज संख्या : DOC-ROR-05\nDate / दिनांक : 19/04/2023",
+      "entities": {
+        "owner_name": "Anita Yadav",
+        "father_name": "Suresh Yadav",
+        "khasra_number": "520/1",
+        "khata_number": "188",
+        "survey_number": "SN-610",
+        "plot_number": "P-55",
+        "village": "Malihabad",
+        "tehsil": "Malihabad",
+        "district": "Lucknow",
+        "state": "Uttar Pradesh",
+        "land_area": "1.75 Bigha",
+        "land_type": "Agricultural (Irrigated)",
+        "registration_number": "UP-LKO-2023-4122",
+        "mutation_number": "MUT-810",
+        "document_number": "DOC-ROR-05",
+        "date": "19/04/2023"
+      },
+      "type": "jamabandi_ror"
+    }
+  ],
+  "realtime_exemplars": [
+    {
+      "text": "INDIA NON JUDICIAL\nGovernment of Uttar Pradesh\ne-Stamp\nCertificate No. : IN-UP76993801475378T\nCertificate Issued Date : 01-Jun-2021 01:51 PM\nAccount Reference : NEWIMPACC (SV)/ up14000104/ GHAZIABAD/ UP-GZB\nUnique Doc. Reference : SUBIN-UPUP1400010441539040014220T\nPurchased by : PANKAJ TYAGI AND AMRITA TYAGI\nDescription of Document : Article 23 Conveyance\nProperty Description : FLAT NO 1101 11th FLOOR MILLENIA EMERALD HEIGHTS SEC-7 RAMFRASTHA GREENS VAISHALI EXTN, GZB\nConsideration Price (Rs.) : 6,90,000\nFirst Party : KIRAN VERMA GPA HOLDER OF PINKY SEHDEV\nSecond Party : PANKAJ TYAGI AND AMRITA TYAGI\nStamp Duty Paid By : PANKAJ TYAGI AND AMRITA TYAGI\nStamp Duty Amount(Rs.) : 6,90,000\n(Six Lakh Ninety Thousand only)\n",
+      "entities": {
+        "owner_name": "Pankaj Tyagi and Amrita Tyagi",
+        "father_name": "Kiran Verma GPA Holder of Pinky Sehdev",
+        "khasra_number": "Sec-7 Ramprastha Greens",
+        "khata_number": "Flat No 1101",
+        "survey_number": "IN-UP76993801475378T",
+        "plot_number": "Flat 1101",
+        "village": "Vaishali Extn",
+        "tehsil": "Ghaziabad",
+        "district": "Ghaziabad",
+        "state": "Uttar Pradesh",
+        "land_area": "Flat No 1101 11th Floor",
+        "land_type": "Article 23 Conveyance",
+        "registration_number": "IN-UP76993801475378T",
+        "mutation_number": "up14000104",
+        "document_number": "SUBIN-UPUP1400010441539040014220T",
+        "date": "01/06/2021"
+      },
+      "type": "estamp_conveyance_deed",
+      "source": "sample_9_estamp_ghaziabad.jpg",
+      "adapted_at": "2026-09-09T22:49:11Z"
+    },
+    {
+      "text": "GOVERNMENT OF MADHYA PRADESH - REVENUE DEPARTMENT\nRECORD OF RIGHTS / 3R 3Hf H\nOwner Name / Hif  H : Ram Kumar\nFather's Name / f  H : Shyam Lal\nKhasra Number / qRT . : 245/2\nKhata Number / l ±. : 112\nSurvey Number / R . : SN-882\nPlot Number / qic ±. : P-12\nVillage / TRIH : Rau\nTehsil /  : Rau\nDistrict / μfl : Indore\nState /R : Madhya Pradesh\nLand Area / RqsI : 1.25 Hectare\nLand Type / f RqR : Agricultural (Irrigated)\nRegistration No /R H : MP-IND-2023-9901\nMutation No / HHiRU RHi : MUT-441\nDocument No / &HaIq qI : DOC-JAMABANDI-01\nDate/fi: 14/08/2023\nOFFICIAL SEAL",
+      "entities": {
+        "owner_name": "Name / Hif",
+        "father_name": "Shyam Lal",
+        "khasra_number": "245/2",
+        "khata_number": "112",
+        "survey_number": "SN-882",
+        "plot_number": "P-12",
+        "village": "Rau",
+        "tehsil": "Rau",
+        "district": "Indore",
+        "state": "Madhya Pradesh",
+        "land_area": "1.25Hectare",
+        "land_type": "Agricultural (Irrigated",
+        "registration_number": "MP-IND-2023-9901",
+        "mutation_number": "MUT-441",
+        "document_number": "JAMABANDI-01",
+        "date": "14/08/2023"
+      },
+      "type": "human_verified_record",
+      "source": "sample_1_clean_rau.png",
+      "adapted_at": "2026-09-09T22:48:54Z"
+    },
+    {
+      "text": "GOVERNMENT OF UTTAR PRADESH\nOwner Name : Rajesh Kumar\nFather's Name : Mahesh Kumar\nKhasra Number : 555/1\nVillage : Malihabad\nTehsil : Malihabad\nDistrict : Lucknow\nDate : 10/10/2023",
+      "entities": {
+        "owner_name": "Rajesh Kumar",
+        "father_name": "Mahesh Kumar",
+        "khasra_number": "555/1",
+        "village": "Malihabad",
+        "tehsil": "Malihabad",
+        "district": "Lucknow",
+        "date": "10/10/2023"
+      },
+      "type": "user_uploaded_record",
+      "source": "custom_realtime_test.png",
+      "adapted_at": "2026-09-09T22:48:58Z"
+    },
+    {
+      "text": "owner_name: Kailash Chand\nfather_name: Deepak Chand\nkhasra_number: 409/1\nkhata_number: 601\nsurvey_number: SN-339\nplot_number: P-88\nvillage: Kanadia\ntehsil: Kanadia\ndistrict: Indore\nstate: Madhya Pradesh\nland_area: 150.0 Hectare\nland_type: Commercial / Mixed\nregistration_number: MP-IND-2023-5512\nmutation_number: MUT-761\ndocument_number: DOC-REG-06\ndate: 19/09/2023\n",
+      "entities": {
+        "owner_name": "Kailash",
+        "father_name": "Deepak",
+        "khasra_number": "409/1",
+        "khata_number": "601",
+        "survey_number": "MP-IND-2023-5512",
+        "village": "Kanadia",
+        "tehsil": "Kanadia",
+        "district": "Indore",
+        "state": "Madhya Pradesh",
+        "land_area": "150.0 Hectare",
+        "date": "19/09/2023"
+      },
+      "type": "human_verified_record",
+      "source": "sample_6_anomaly_unusual_area.png",
+      "adapted_at": "2026-09-04T00:12:10Z"
+    }
+  ],
+  "learned_archetypes": {
+    "UP_ESTAMP_CONVEYANCE": {
+      "document_title": "UTTAR PRADESH ARTICLE 23 CONVEYANCE DEED E-STAMP",
+      "district": "Ghaziabad",
+      "state": "Uttar Pradesh",
+      "recognized_patterns": [
+        "INDIA NON JUDICIAL",
+        "Government of Uttar Pradesh",
+        "e-Stamp",
+        "Article 23 Conveyance",
+        "Unique Doc. Reference",
+        "SUBIN"
+      ]
+    }
+  },
+  "metrics": {
+    "mean_latency_ms": 1484.45,
+    "retention_score": 0.9944521497919556,
+    "realtime_accuracy": 0.9944521497919556
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "filename": "sample_10_non_land_invoice.png",
+  "title": "COMMERCIAL TAX INVOICE (NON-LAND RECORD)",
+  "is_land_record": false,
+  "document_type": "invoice_or_billing",
+  "fields": {
+    "owner_name": "",
+    "father_name": "",
+    "khasra_number": "",
+    "khata_number": "",
+    "survey_number": "",
+    "plot_number": "",
+    "village": "",
+    "tehsil": "",
+    "district": "",
+    "state": "",
+    "land_area": "",
+    "land_type": "",
+    "registration_number": "INV-2024-8891",
+    "mutation_number": "",
+    "document_number": "INV-2024-8891",
+    "date": "15/03/2024"
+  },
+  "expected_confidence": "LOW",
+  "expected_status": "validation_error",
+  "warning_message": "The uploaded document is recognized as a 'Commercial Tax Invoice / Bill', NOT an authentic land revenue record."
+}

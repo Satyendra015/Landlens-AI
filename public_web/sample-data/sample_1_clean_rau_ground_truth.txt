@@ -1,0 +1,16 @@
+Owner Name / मालिक का नाम : Ram Kumar
+Father's Name / पिता का नाम : Shyam Lal
+Khasra Number / खसरा नं. : 245/2
+Khata Number / खाता नं. : 112
+Survey Number / सर्वे नं. : SN-882
+Plot Number / प्लॉट नं. : P-12
+Village / ग्राम : Rau
+Tehsil / तहसील : Rau
+District / जिला : Indore
+State / राज्य : Madhya Pradesh
+Land Area / रकबा : 1.25 Hectare
+Land Type / भूमि प्रकार : Agricultural (Irrigated)
+Registration No / पंजीकरण क्रमांक : MP-IND-2023-9901
+Mutation No / नामांतरण क्रमांक : MUT-441
+Document No / दस्तावेज संख्या : DOC-JAMABANDI-01
+Date / दिनांक : 14/08/2023

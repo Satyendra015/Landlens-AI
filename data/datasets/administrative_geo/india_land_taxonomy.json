@@ -1,0 +1,84 @@
+{
+  "Madhya Pradesh": {
+    "Indore": [
+      "Rau",
+      "Kanadia",
+      "Sanwer",
+      "Depalpur",
+      "Mhow",
+      "Hatod",
+      "Bicholi Hapsi",
+      "Juni Indore",
+      "Malharganj"
+    ],
+    "Ujjain": [
+      "Ujjain City",
+      "Ujjain Rural",
+      "Tarana",
+      "Mahidpur",
+      "Khachrod",
+      "Badnagar",
+      "Nagda"
+    ],
+    "Dewas": [
+      "Dewas",
+      "Sonkatch",
+      "Bagli",
+      "Kannod",
+      "Khategaon",
+      "Tonk Khurd"
+    ],
+    "Dhar": [
+      "Dhar",
+      "Badnawar",
+      "Sardarpur",
+      "Manawar",
+      "Kukshi",
+      "Gandhwani"
+    ],
+    "Bhopal": [
+      "Huzur",
+      "Berasia",
+      "Kolar"
+    ],
+    "Sehore": [
+      "Sehore",
+      "Ashta",
+      "Ichhawar",
+      "Nasrullaganj",
+      "Budhni",
+      "Shyampur"
+    ]
+  },
+  "Uttar Pradesh": {
+    "Lucknow": [
+      "Lucknow",
+      "Mohanlalganj",
+      "Bakshi Ka Talab",
+      "Malihabad",
+      "Sarojini Nagar"
+    ],
+    "Varanasi": [
+      "Varanasi",
+      "Pindra",
+      "Raja Talab"
+    ],
+    "Agra": [
+      "Agra",
+      "Fatehabad",
+      "Kheragarh",
+      "Etmadpur",
+      "Bah"
+    ],
+    "Kanpur Nagar": [
+      "Kanpur Sadar",
+      "Ghatampur",
+      "Bilhaur"
+    ],
+    "Ghaziabad": [
+      "Ghaziabad",
+      "Modinagar",
+      "Loni"
+    ]
+  }
+}

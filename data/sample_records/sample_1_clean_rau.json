@@ -1,0 +1,24 @@
+{
+  "filename": "sample_1_clean_rau.png",
+  "title": "MADHYA PRADESH - INDORE ROR",
+  "fields": {
+    "owner_name": "Ram Kumar",
+    "father_name": "Shyam Lal",
+    "khasra_number": "245/2",
+    "khata_number": "112",
+    "survey_number": "SN-882",
+    "plot_number": "P-12",
+    "village": "Rau",
+    "tehsil": "Rau",
+    "district": "Indore",
+    "state": "Madhya Pradesh",
+    "land_area": "1.25 Hectare",
+    "land_type": "Agricultural (Irrigated)",
+    "registration_number": "MP-IND-2023-9901",
+    "mutation_number": "MUT-441",
+    "document_number": "DOC-JAMABANDI-01",
+    "date": "14/08/2023"
+  },
+  "expected_confidence": "HIGH",
+  "expected_status": "verified"
+}

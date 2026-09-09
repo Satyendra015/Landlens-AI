@@ -1,0 +1,24 @@
+{
+  "filename": "sample_8_sunil_sanwer.png",
+  "title": "MADHYA PRADESH - SANWER CADASTRAL RECORD",
+  "fields": {
+    "owner_name": "Sunil Malviya",
+    "father_name": "Shiv Dayal",
+    "khasra_number": "205/4",
+    "khata_number": "310",
+    "survey_number": "SN-501",
+    "plot_number": "P-14",
+    "village": "Sanwer",
+    "tehsil": "Sanwer",
+    "district": "Indore",
+    "state": "Madhya Pradesh",
+    "land_area": "1.90 Hectare",
+    "land_type": "Agricultural (Irrigated)",
+    "registration_number": "MP-IND-2024-5501",
+    "mutation_number": "MUT-633",
+    "document_number": "DOC-ROR-08",
+    "date": "19/03/2024"
+  },
+  "expected_confidence": "HIGH",
+  "expected_status": "verified"
+}

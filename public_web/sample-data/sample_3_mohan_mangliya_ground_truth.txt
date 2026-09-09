@@ -1,0 +1,16 @@
+Owner Name / मालिक का नाम : Mohan Singh
+Father's Name / पिता का नाम : Deepak Chand
+Khasra Number / खसरा नं. : 102/3
+Khata Number / खाता नं. : 67
+Survey Number / सर्वे नं. : SN-119
+Plot Number / प्लॉट नं. : P-44
+Village / ग्राम : Mangliya
+Tehsil / तहसील : Sanwer
+District / जिला : Indore
+State / राज्य : Madhya Pradesh
+Land Area / रकबा : 0.85 Hectare
+Land Type / भूमि प्रकार : Agricultural (Irrigated)
+Registration No / पंजीकरण क्रमांक : MP-IND-2024-1029
+Mutation No / नामांतरण क्रमांक : MUT-889
+Document No / दस्तावेज संख्या : DOC-JAMABANDI-03
+Date / दिनांक : 05/01/2024

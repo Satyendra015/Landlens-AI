@@ -1,0 +1,24 @@
+{
+  "filename": "sample_2_sita_kanadia.png",
+  "title": "MADHYA PRADESH - INDORE KHATAUNI",
+  "fields": {
+    "owner_name": "Sita Sharma",
+    "father_name": "Narayan Das",
+    "khasra_number": "318/1",
+    "khata_number": "94",
+    "survey_number": "SN-402",
+    "plot_number": "P-05",
+    "village": "Kanadia",
+    "tehsil": "Kanadia",
+    "district": "Indore",
+    "state": "Madhya Pradesh",
+    "land_area": "2.10 Hectare",
+    "land_type": "Agricultural (Non-Irrigated)",
+    "registration_number": "MP-IND-2022-7712",
+    "mutation_number": "MUT-512",
+    "document_number": "DOC-KHATAUNI-02",
+    "date": "22/11/2022"
+  },
+  "expected_confidence": "HIGH",
+  "expected_status": "verified"
+}

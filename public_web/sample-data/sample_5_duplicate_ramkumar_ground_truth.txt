@@ -1,0 +1,16 @@
+owner_name: Ramkumar
+father_name: Shyam Lal
+khasra_number: 245/2
+khata_number: 112
+survey_number: SN-882
+plot_number: P-12
+village: Rau
+tehsil: Rau
+district: Indore
+state: Madhya Pradesh
+land_area: 1.25 Hectare
+land_type: Agricultural
+registration_number: MP-IND-2024-1188
+mutation_number: MUT-992
+document_number: DOC-MUT-05
+date: 12/02/2024

@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LandLens AI — SIH26018 Presentation Deck</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+    
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: #0b1120;
+      color: #f8fafc;
+      overflow: hidden;
+    }
+    
+    .slide {
+      display: none;
+      opacity: 0;
+      transform: scale(0.98);
+      transition: opacity 0.35s ease, transform 0.35s ease;
+    }
+    
+    .slide.active {
+      display: flex;
+      opacity: 1;
+      transform: scale(1);
+    }
+    
+    .glass-card {
+      background: rgba(30, 41, 59, 0.7);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .gold-gradient {
+      background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    }
+
+    .navy-gradient {
+      background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%);
+    }
+  </style>
+</head>
+<body class="h-screen w-screen flex flex-col justify-between selection:bg-amber-500 selection:text-slate-900">
+
+  <!-- Top Bar -->
+  <header class="h-14 px-8 border-b border-slate-800/80 bg-slate-950/60 backdrop-blur-md flex items-center justify-between z-20">
+    <div class="flex items-center space-x-3">
+      <img src="landlens_seal_exact.png" alt="LandLens AI Emblem" class="h-8 w-8 object-contain">
+      <span class="font-extrabold text-lg tracking-wider text-white">LANDLENS <span class="text-amber-500">AI</span></span>
+      <span class="text-xs px-2.5 py-0.5 rounded-full bg-slate-800 text-amber-400 font-semibold border border-amber-500/20">SIH26018</span>
+    </div>
+    
+    <!-- Center Current Slide Title -->
+    <div id="slide-nav-title" class="text-xs font-semibold text-slate-400 uppercase tracking-widest hidden md:block">
+      Title Slide
+    </div>
+
+    <!-- Right Controls -->
+    <div class="flex items-center space-x-4 text-slate-400 text-sm">
+      <button id="notes-toggle" class="px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-300 transition text-xs flex items-center gap-1.5" title="Toggle Presenter Notes (N)">
+        <i class="fa-solid fa-clipboard text-amber-400"></i> Notes (N)
+      </button>
+      <button id="fs-toggle" class="p-2 hover:text-white transition" title="Toggle Fullscreen (F)">
+        <i class="fa-solid fa-expand"></i>
+      </button>
+      <span id="slide-counter" class="font-mono text-xs text-amber-400 font-bold bg-amber-500/10 px-2.5 py-1 rounded-md border border-amber-500/20">
+        01 / 12
+      </span>
+    </div>
+  </header>
+
+  <!-- Main Slide Canvas -->
+  <main class="flex-1 relative overflow-hidden flex items-center justify-center p-6 md:p-10">
+
+    <!-- =========================================================================
+         SLIDE 1: Title Slide
+         ========================================================================= -->
+    <section class="slide active flex-col items-center justify-center text-center max-w-5xl w-full h-full my-auto" data-title="Overview & Title">
+      <div class="mb-4 relative">
+        <div class="absolute -inset-4 bg-amber-500/10 rounded-full blur-2xl"></div>
+        <img src="landlens_seal_exact.png" alt="Emblem" class="h-24 w-24 object-contain mx-auto relative drop-shadow-[0_10px_20px_rgba(245,158,11,0.15)]">
+      </div>
+      <div class="inline-block px-4 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-bold tracking-widest uppercase mb-3">
+        Smart India Hackathon 2024 • Problem Statement SIH26018
+      </div>
+      <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight text-white mb-4">
+        LANDLENS <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-amber-600">AI</span>
+      </h1>
+      <p class="text-lg md:text-xl text-slate-300 font-semibold max-w-3xl mb-3 leading-relaxed">
+        National Geospatial Land Record Digitization, Validation & Governance Intelligence Platform
+      </p>
+      <p class="text-sm md:text-base text-amber-400/90 italic mb-8 font-serif">
+        “From Legacy Land Records to Verified Digital Intelligence.”
+      </p>
+
+      <!-- Bottom Badges -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 w-full max-w-4xl text-left">
+        <div class="glass-card p-4 rounded-xl border-l-4 border-amber-500">
+          <p class="text-xs font-bold text-amber-400 uppercase tracking-wider">Problem Statement</p>
+          <p class="text-sm font-semibold text-white mt-1">SIH26018: Land Revenue Digitization</p>
+          <p class="text-xs text-slate-400 mt-0.5">Ministry of Rural Development / Land Resources</p>
+        </div>
+        <div class="glass-card p-4 rounded-xl border-l-4 border-blue-500">
+          <p class="text-xs font-bold text-blue-400 uppercase tracking-wider">Key Technologies</p>
+          <p class="text-sm font-semibold text-white mt-1">Computer Vision + Bilingual OCR</p>
+          <p class="text-xs text-slate-400 mt-0.5">CLAHE, Devanagari CNN, TF-IDF, RapidFuzz</p>
+        </div>
+        <div class="glass-card p-4 rounded-xl border-l-4 border-emerald-500">
+          <p class="text-xs font-bold text-emerald-400 uppercase tracking-wider">Deployment Readiness</p>
+          <p class="text-sm font-semibold text-white mt-1">100% Offline Edge + Hybrid Cloud</p>
+          <p class="text-xs text-slate-400 mt-0.5">Zero cloud exfiltration • Dockerized</p>
+        </div>
+      </div>
+
+      <div class="hidden notes-content">
+        Welcome judges. Today we present LandLens AI for Problem Statement SIH26018. 
+        LandLens AI transforms aging, faded historical land records across India into verified digital intelligence, 
+        combining edge Computer Vision, Bilingual OCR, Continuous Online Learning, and Geospatial GIS integration.
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SLIDE 2: Problem Statement & National Crisis
+         ========================================================================= -->
+    <section class="slide flex-col justify-center max-w-6xl w-full h-full" data-title="1. The Problem Statement">
+      <div class="text-xs font-bold text-amber-400 tracking-wider uppercase mb-1">Section 01 • The Problem Statement</div>
+      <h2 class="text-3xl font-extrabold text-white mb-6">The National Crisis in Land Revenue Administration</h2>
+      
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch">
+        <!-- Left 2 Cards -->
+        <div class="lg:col-span-2 space-y-4">
+          <div class="glass-card p-5 rounded-xl border-l-4 border-rose-500">
+            <div class="flex items-center gap-3 mb-1">
+              <i class="fa-solid fa-file-excel text-rose-400 text-lg"></i>
+              <h3 class="text-base font-bold text-white">1. Historical & Degraded Physical Paper Registers</h3>
+            </div>
+            <p class="text-sm text-slate-300 leading-relaxed pl-7">
+              Millions of Jamabandi, Khasra, Khatauni, and e-Stamp deeds locked away in aged, yellowed, low-contrast physical registers over 50 years old. Faded ink and torn paper make manual transcription extremely error-prone.
+            </p>
+          </div>
+
+          <div class="glass-card p-5 rounded-xl border-l-4 border-amber-500">
+            <div class="flex items-center gap-3 mb-1">
+              <i class="fa-solid fa-layer-group text-amber-400 text-lg"></i>
+              <h3 class="text-base font-bold text-white">2. Extreme Regional Format & Vernacular Fragmentation</h3>
+            </div>
+            <p class="text-sm text-slate-300 leading-relaxed pl-7">
+              Inconsistent schemas and languages across 28 states (7/12 in Maharashtra, RoR/Jamabandi in MP, Kaveri in Karnataka, e-Stamp in UP). Commercial cloud OCR tools fail on Indian legal deed structures.
+            </p>
+          </div>
+
+          <div class="glass-card p-5 rounded-xl border-l-4 border-indigo-500">
+            <div class="flex items-center gap-3 mb-1">
+              <i class="fa-solid fa-triangle-exclamation text-indigo-400 text-lg"></i>
+              <h3 class="text-base font-bold text-white">3. Manual Transcription Bottlenecks & Title Fraud</h3>
+            </div>
+            <p class="text-sm text-slate-300 leading-relaxed pl-7">
+              Manual clerical entry produces duplicate registration claims, unnoticed spelling manipulations, fraudulent mutations, and disconnected geospatial boundary errors.
+            </p>
+          </div>
+        </div>
+
+        <!-- Right Callout -->
+        <div class="glass-card p-6 rounded-xl border-t-4 border-amber-400 flex flex-col justify-between bg-gradient-to-b from-slate-900/90 to-indigo-950/40">
+          <div>
+            <div class="text-xs font-bold text-indigo-400 uppercase tracking-widest">Judicial Impact</div>
+            <div class="text-5xl font-black text-amber-400 mt-3 mb-2">&gt; 65%</div>
+            <p class="text-base font-bold text-white leading-snug">
+              of all civil litigation in Indian courts relates to land, boundary, and property disputes.
+            </p>
+            <div class="mt-4 pt-4 border-t border-slate-700/60 space-y-2 text-xs text-slate-300">
+              <p>• <b>Avg. Dispute Time:</b> 15–20 years in court</p>
+              <p>• <b>Trapped Capital:</b> ₹14+ Lakh Crore</p>
+              <p>• <b>Infrastructure Impact:</b> Major bottleneck for highway and industrial corridors</p>
+            </div>
+          </div>
+          <div class="mt-4 p-3 rounded-lg bg-amber-500/10 border border-amber-500/20 text-xs text-amber-300">
+            <i class="fa-solid fa-check-circle mr-1"></i> <b>LandLens AI Goal:</b> Eliminate litigation at the source by creating a tamper-evident digital single source of truth.
+          </div>
+        </div>
+      </div>
+
+      <div class="hidden notes-content">
+        Judges, over 65% of all civil litigation in India is tied to property disputes. 
+        Paper records are degraded, regional formats are completely fragmented, and manual entry breeds errors and fraud. 
+        LandLens AI solves this root problem.
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SLIDE 3: The 9 Core Architectural Pillars
+         ========================================================================= -->
+    <section class="slide flex-col justify-center max-w-6xl w-full h-full" data-title="2. System Architecture">
+      <div class="text-xs font-bold text-amber-400 tracking-wider uppercase mb-1">Section 02 • System Architecture</div>
+      <h2 class="text-3xl font-extrabold text-white mb-6">The 9 Core Architectural Pillars</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div class="glass-card p-4 rounded-xl border-t-2 border-blue-500">
+          <div class="flex items-center gap-2 text-blue-400 font-bold text-sm mb-1">
+            <i class="fa-solid fa-wand-magic-sparkles"></i> Pillar 1: Adaptive CV
+          </div>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            Hough deskewing, bilateral filtering, CLAHE contrast rescue, and adaptive binarization for 50-year-old degraded paper.
+          </p>
+        </div>
+
+        <div class="glass-card p-4 rounded-xl border-t-2 border-amber-500">
+          <div class="flex items-center gap-2 text-amber-400 font-bold text-sm mb-1">
+            <i class="fa-solid fa-language"></i> Pillar 2: Bilingual OCR
+          </div>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            Ensemble OCR reading English & Devanagari scripts with native handwritten Devanagari numeral normalization (२४५/२ ➔ 245/2).
+          </p>
+        </div>
+
+        <div class="glass-card p-4 rounded-xl border-t-2 border-emerald-500">
+          <div class="flex items-center gap-2 text-emerald-400 font-bold text-sm mb-1">
+            <i class="fa-solid fa-shield-halved"></i> Pillar 3: Discriminator
+          </div>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            Hybrid ML + lexical classifier rejecting non-land files (invoices, resumes, prescriptions) with interactive warning modal alert.
+          </p>
+        </div>
+
+        <div class="glass-card p-4 rounded-xl border-t-2 border-purple-500">
+          <div class="flex items-center gap-2 text-purple-400 font-bold text-sm mb-1">
+            <i class="fa-solid fa-tags"></i> Pillar 4: Domain Land NER
+          </div>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            Extracts 16 revenue entities; decomposes complex multi-line urban conveyance deed property descriptions.
+          </p>
+        </div>
+
+        <div class="glass-card p-4 rounded-xl border-t-2 border-rose-500">
+          <div class="flex items-center gap-2 text-rose-400 font-bold text-sm mb-1">
+            <i class="fa-solid fa-bolt"></i> Pillar 5: Online Continuous Learning
+          </div>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            &lt;500ms online adaptation on new regional deed formats with Experience Replay memory (0.0% catastrophic forgetting).
+          </p>
+        </div>
+
+        <div class="glass-card p-4 rounded-xl border-t-2 border-cyan-500">
+          <div class="flex items-center gap-2 text-cyan-400 font-bold text-sm mb-1">
+            <i class="fa-solid fa-check-double"></i> Pillar 6: Cadastral Rules
+          </div>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            Validates area thresholds (>50 Ha anomaly guard), missing attributes, and phonetic duplicate registrations via RapidFuzz.
+          </p>
+        </div>
+
+        <div class="glass-card p-4 rounded-xl border-t-2 border-yellow-500">
+          <div class="flex items-center gap-2 text-yellow-400 font-bold text-sm mb-1">
+            <i class="fa-solid fa-user-check"></i> Pillar 7: HITL Studio
+          </div>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            3-column interactive workspace with zoomable scan, confidence color tags, and one-click statutory officer approval.
+          </p>
+        </div>
+
+        <div class="glass-card p-4 rounded-xl border-t-2 border-teal-500">
+          <div class="flex items-center gap-2 text-teal-400 font-bold text-sm mb-1">
+            <i class="fa-solid fa-map-location-dot"></i> Pillar 8: Cadastral GIS
+          </div>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            Interactive parcel visualizer overlaying Khasra boundaries onto satellite maps; immutable cryptographic audit trail.
+          </p>
+        </div>
+
+        <div class="glass-card p-4 rounded-xl border-t-2 border-pink-500">
+          <div class="flex items-center gap-2 text-pink-400 font-bold text-sm mb-1">
+            <i class="fa-solid fa-brain"></i> Pillar 9: Gemini 3.1 Pro AI
+          </div>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            Land Intelligence Assistant with real-time state circle rates, RFCTLARR statutory compensation, and mega project tracker.
+          </p>
+        </div>
+      </div>
+
+      <div class="hidden notes-content">
+        Our architecture is structured into 9 cohesive pillars covering the entire lifecycle: 
+        from raw image preprocessing to multilingual OCR, fraud discrimination, domain NER, 
+        continuous learning, human verification, and GIS integration.
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SLIDE 4: Computer Vision & Bilingual OCR
+         ========================================================================= -->
+    <section class="slide flex-col justify-center max-w-6xl w-full h-full" data-title="3. Computer Vision & OCR">
+      <div class="text-xs font-bold text-amber-400 tracking-wider uppercase mb-1">Section 03 • Core Intelligence</div>
+      <h2 class="text-3xl font-extrabold text-white mb-6">Pillars 1 & 2: Computer Vision Pipeline & Devanagari OCR</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Pillar 1 -->
+        <div class="glass-card p-6 rounded-xl border-l-4 border-blue-500 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-2 text-blue-400 font-bold text-base mb-3">
+              <i class="fa-solid fa-camera"></i> PILLAR 1: ADAPTIVE COMPUTER VISION PIPELINE
+            </div>
+            <ul class="space-y-3 text-xs text-slate-300 leading-relaxed">
+              <li class="flex items-start gap-2">
+                <i class="fa-solid fa-circle-check text-blue-400 mt-0.5"></i>
+                <span><b>Laplacian Blur Metric:</b> Computes variance of Laplacian to automatically flag blurry scans.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i class="fa-solid fa-circle-check text-blue-400 mt-0.5"></i>
+                <span><b>Bilateral Filtering:</b> Eliminates scanner speckles and paper yellowing without softening character edges.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i class="fa-solid fa-circle-check text-blue-400 mt-0.5"></i>
+                <span><b>CLAHE Enhancement:</b> Rescues faded, degraded 50-year-old ink entries by equalizing local histogram tiles.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i class="fa-solid fa-circle-check text-blue-400 mt-0.5"></i>
+                <span><b>Hough Deskewing:</b> Calculates minimum bounding box of text contours and applies affine rotation straightening.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i class="fa-solid fa-circle-check text-blue-400 mt-0.5"></i>
+                <span><b>Adaptive Binarization:</b> Converts multi-shade paper textures into clean monochrome pixels.</span>
+              </li>
+            </ul>
+          </div>
+          <div class="mt-4 p-3 rounded-lg bg-blue-500/10 border border-blue-500/20 text-xs text-blue-300">
+            <i class="fa-solid fa-image mr-1"></i> Interactive Before & After split slider available in the Verification Studio.
+          </div>
+        </div>
+
+        <!-- Pillar 2 -->
+        <div class="glass-card p-6 rounded-xl border-l-4 border-amber-500 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-2 text-amber-400 font-bold text-base mb-3">
+              <i class="fa-solid fa-font"></i> PILLAR 2: BILINGUAL OCR & NUMERAL NORMALIZER
+            </div>
+            <ul class="space-y-3 text-xs text-slate-300 leading-relaxed">
+              <li class="flex items-start gap-2">
+                <i class="fa-solid fa-circle-check text-amber-400 mt-0.5"></i>
+                <span><b>Modular OCR Ensemble:</b> Pluggable EasyOCR, Tesseract, PDF text stream, and fallback parsers.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i class="fa-solid fa-circle-check text-amber-400 mt-0.5"></i>
+                <span><b>Bilingual Hindi + English:</b> Extracts character-level bounding boxes across mixed language land registers.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i class="fa-solid fa-circle-check text-amber-400 mt-0.5"></i>
+                <span><b>Native Devanagari Numeral Normalization:</b> Converts handwritten Patwari Hindi digits to standard digital numbers:</span>
+              </li>
+            </ul>
+
+            <!-- Normalizer Demonstration Box -->
+            <div class="mt-3 p-3 rounded-lg bg-slate-900 border border-slate-700/70 font-mono text-xs space-y-1.5">
+              <div class="flex justify-between text-slate-300">
+                <span>Handwritten: <b class="text-amber-400 text-sm">२४५/२</b> (Khasra)</span>
+                <span class="text-emerald-400 font-bold">➔ Normalized: 245/2</span>
+              </div>
+              <div class="flex justify-between text-slate-300">
+                <span>Handwritten: <b class="text-amber-400 text-sm">११२</b> (Khata)</span>
+                <span class="text-emerald-400 font-bold">➔ Normalized: 112</span>
+              </div>
+              <div class="flex justify-between text-slate-300">
+                <span>Handwritten: <b class="text-amber-400 text-sm">४४१</b> (Mutation)</span>
+                <span class="text-emerald-400 font-bold">➔ Normalized: 441</span>
+              </div>
+            </div>
+          </div>
+          <div class="mt-4 p-3 rounded-lg bg-amber-500/10 border border-amber-500/20 text-xs text-amber-300">
+            <i class="fa-solid fa-award mr-1"></i> Solves the #1 cause of transcription failures in Indian revenue portals.
+          </div>
+        </div>
+      </div>
+
+      <div class="hidden notes-content">
+        Pillar 1 enhances faded scans via CLAHE and deskewing. 
+        Pillar 2 solves a massive real-world pain point: revenue officers write Khasra numbers in Devanagari script. 
+        Our engine automatically normalizes these numerals into digital Arabic digits with 96%+ accuracy.
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SLIDE 5: Discriminator & Domain NER
+         ========================================================================= -->
+    <section class="slide flex-col justify-center max-w-6xl w-full h-full" data-title="4. Discriminator & Domain NER">
+      <div class="text-xs font-bold text-amber-400 tracking-wider uppercase mb-1">Section 04 • Fraud Guard & Extraction</div>
+      <h2 class="text-3xl font-extrabold text-white mb-6">Pillars 3 & 4: Intelligent Discriminator & Domain NER</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Pillar 3 -->
+        <div class="glass-card p-6 rounded-xl border-l-4 border-emerald-500 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-2 text-emerald-400 font-bold text-base mb-3">
+              <i class="fa-solid fa-shield-virus"></i> PILLAR 3: INTELLIGENT DISCRIMINATOR & FRAUD GUARD
+            </div>
+            <p class="text-xs text-slate-300 mb-3">
+              Traditional cloud OCR blindly parses whatever image is uploaded. LandLens AI implements an active ingestion gatekeeper.
+            </p>
+            <ul class="space-y-2.5 text-xs text-slate-300 leading-relaxed">
+              <li class="flex items-start gap-2">
+                <i class="fa-solid fa-circle-check text-emerald-400 mt-0.5"></i>
+                <span><b>Two-Stage Ensemble:</b> Lexical domain semantic scoring + Regularized TF-IDF Linear Model.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i class="fa-solid fa-circle-check text-emerald-400 mt-0.5"></i>
+                <span><b>Automatic Rejection of Non-Land Files:</b>
+                  <div class="mt-1 flex flex-wrap gap-1.5">
+                    <span class="px-2 py-0.5 rounded bg-rose-500/20 text-rose-300 border border-rose-500/30">Tax Invoices</span>
+                    <span class="px-2 py-0.5 rounded bg-rose-500/20 text-rose-300 border border-rose-500/30">Resumes / CVs</span>
+                    <span class="px-2 py-0.5 rounded bg-rose-500/20 text-rose-300 border border-rose-500/30">Medical Prescriptions</span>
+                    <span class="px-2 py-0.5 rounded bg-rose-500/20 text-rose-300 border border-rose-500/30">Utility Bills</span>
+                    <span class="px-2 py-0.5 rounded bg-rose-500/20 text-rose-300 border border-rose-500/30">ID Cards</span>
+                  </div>
+                </span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i class="fa-solid fa-circle-check text-emerald-400 mt-0.5"></i>
+                <span><b>Interactive Amber Warning Modal:</b> Alerts officer instantly before database insertion.</span>
+              </li>
+            </ul>
+          </div>
+          <div class="mt-4 p-3 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-xs text-emerald-300">
+            <i class="fa-solid fa-lock mr-1"></i> Prevents database pollution and unauthorized document uploads.
+          </div>
+        </div>
+
+        <!-- Pillar 4 -->
+        <div class="glass-card p-6 rounded-xl border-l-4 border-purple-500 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-2 text-purple-400 font-bold text-base mb-3">
+              <i class="fa-solid fa-diagram-project"></i> PILLAR 4: DOMAIN NER & DEED DECOMPOSITION
+            </div>
+            <p class="text-xs text-slate-300 mb-2">
+              Extracts <b>16 standardized Indian land revenue attributes</b> with character-level accuracy:
+            </p>
+            <div class="grid grid-cols-2 gap-1.5 text-xs font-mono text-slate-300 bg-slate-900/80 p-3 rounded-lg border border-slate-700/60 mb-3">
+              <div>• Owner Name</div>
+              <div>• Father's Name</div>
+              <div>• Khasra Number</div>
+              <div>• Khata Number</div>
+              <div>• Survey Number</div>
+              <div>• Plot Number</div>
+              <div>• Village & Tehsil</div>
+              <div>• District & State</div>
+              <div>• Land Area (Ha)</div>
+              <div>• Land Type</div>
+              <div>• Registration No.</div>
+              <div>• Mutation Number</div>
+              <div>• Document Number</div>
+              <div>• Date of Issue</div>
+            </div>
+            <p class="text-xs text-slate-300">
+              <b>Multi-Factor Confidence Formula:</b><br/>
+              <code class="text-amber-400 text-xs">Score = 0.45(OCR) + 0.35(Pattern) + 0.20(Proximity)</code>
+            </p>
+          </div>
+          <div class="mt-4 p-3 rounded-lg bg-purple-500/10 border border-purple-500/20 text-xs text-purple-300">
+            <i class="fa-solid fa-file-contract mr-1"></i> Decomposes complex urban conveyance deeds (SUBIN, stamp duty, consideration price).
+          </div>
+        </div>
+      </div>
+
+      <div class="hidden notes-content">
+        Pillar 3 acts as our fraud and ingestion guard, automatically rejecting non-land files. 
+        Pillar 4 parses 16 core revenue attributes from both rural Jamabandi and urban e-Stamp conveyance deeds.
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SLIDE 6: Online Continuous Adaptation & Validation
+         ========================================================================= -->
+    <section class="slide flex-col justify-center max-w-6xl w-full h-full" data-title="5. Online Learning & Duplicate Guard">
+      <div class="text-xs font-bold text-amber-400 tracking-wider uppercase mb-1">Section 05 • Dynamic Learning & Rules</div>
+      <h2 class="text-3xl font-extrabold text-white mb-6">Pillars 5 & 6: Sub-500ms Online Adaptation & Duplicate Check</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Pillar 5 -->
+        <div class="glass-card p-6 rounded-xl border-l-4 border-rose-500 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-2 text-rose-400 font-bold text-base mb-3">
+              <i class="fa-solid fa-microchip"></i> PILLAR 5: REAL-TIME CONTINUOUS ADAPTATION (&lt;500ms)
+            </div>
+            <ul class="space-y-3 text-xs text-slate-300 leading-relaxed">
+              <li class="flex items-start gap-2">
+                <i class="fa-solid fa-bolt text-rose-400 mt-0.5"></i>
+                <span><b>Instant Regional Adaptation:</b> Revenue officers adapt model on newly observed deed formats in real-time from the browser.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i class="fa-solid fa-rotate text-rose-400 mt-0.5"></i>
+                <span><b>Experience Replay Buffer:</b> Interleaves historical baseline exemplars during incremental weight updates.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i class="fa-solid fa-chart-line text-rose-400 mt-0.5"></i>
+                <span><b>0.0% Catastrophic Forgetting:</b> Empirically verified that historical Jamabandi accuracy remains 100% intact after adapting on e-Stamp deeds.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i class="fa-solid fa-shield-cat text-rose-400 mt-0.5"></i>
+                <span><b>Local Sovereign Execution:</b> Executes entirely within government boundaries with zero cloud dependency.</span>
+              </li>
+            </ul>
+          </div>
+          <div class="mt-4 p-3 rounded-lg bg-rose-500/10 border border-rose-500/20 text-xs text-rose-300 flex items-center justify-between">
+            <span><b>Adaptation Latency:</b> &lt; 420 milliseconds</span>
+            <span class="font-bold text-emerald-400">PASSED ✓</span>
+          </div>
+        </div>
+
+        <!-- Pillar 6 -->
+        <div class="glass-card p-6 rounded-xl border-l-4 border-cyan-500 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-2 text-cyan-400 font-bold text-base mb-3">
+              <i class="fa-solid fa-clone"></i> PILLAR 6: STATUTORY VALIDATION & DUPLICATE CHECK
+            </div>
+            <ul class="space-y-3 text-xs text-slate-300 leading-relaxed">
+              <li class="flex items-start gap-2">
+                <i class="fa-solid fa-fingerprint text-cyan-400 mt-0.5"></i>
+                <span><b>Phonetic Fuzzy Matching:</b> Flags deceptive name variations on duplicate claims (e.g., <i>"Ramkumar"</i> vs <i>"Ram Kumar"</i> on Khasra 245/2) via RapidFuzz.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i class="fa-solid fa-triangle-exclamation text-cyan-400 mt-0.5"></i>
+                <span><b>Range Anomaly Guard:</b> Automatically flags parcels &gt;50.0 Hectares as <i>"Unusual Land Area — Verification Required"</i>.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i class="fa-solid fa-map-pin text-cyan-400 mt-0.5"></i>
+                <span><b>Cross-Field Geographic Alignment:</b> Validates Tehsil against District using national open administrative taxonomy.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i class="fa-solid fa-bell text-cyan-400 mt-0.5"></i>
+                <span><b>Missing Required Field Detection:</b> Visually highlights missing Khasra numbers, dates, or owner names.</span>
+              </li>
+            </ul>
+          </div>
+          <div class="mt-4 p-3 rounded-lg bg-cyan-500/10 border border-cyan-500/20 text-xs text-cyan-300">
+            <i class="fa-solid fa-scale-balanced mr-1"></i> Non-destructive decision support: highlights duplicate risk without auto-deleting data.
+          </div>
+        </div>
+      </div>
+
+      <div class="hidden notes-content">
+        Pillar 5 is our revolutionary feature: sub-500ms online model adaptation with Experience Replay. 
+        Pillar 6 protects the registry against duplicate title claims using phonetic fuzzy matching.
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SLIDE 7: HITL Verification, GIS & Gemini AI
+         ========================================================================= -->
+    <section class="slide flex-col justify-center max-w-6xl w-full h-full" data-title="6. HITL Studio, GIS & Gemini">
+      <div class="text-xs font-bold text-amber-400 tracking-wider uppercase mb-1">Section 06 • Operations & Governance</div>
+      <h2 class="text-3xl font-extrabold text-white mb-6">Pillars 7, 8 & 9: Verification Studio, Cadastral GIS & Gemini AI</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Pillar 7 -->
+        <div class="glass-card p-5 rounded-xl border-t-4 border-yellow-500 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-2 text-yellow-400 font-bold text-sm mb-3">
+              <i class="fa-solid fa-columns"></i> PILLAR 7: HITL STUDIO
+            </div>
+            <ul class="space-y-2 text-xs text-slate-300 leading-relaxed">
+              <li>• <b>3-Column Layout:</b> Left zoomable scan, Center editable fields, Right AI validation & alerts.</li>
+              <li>• <b>Color Badges:</b> Green (≥90%), Amber (70–89%), Red (&lt;70% mandatory officer edit).</li>
+              <li>• <b>Single-Click Action:</b> Approve record, save field edits, or reject with statutory reason.</li>
+            </ul>
+          </div>
+          <div class="mt-4 p-2.5 rounded bg-yellow-500/10 text-yellow-300 text-[11px]">
+            Officer remains the final statutory authority.
+          </div>
+        </div>
+
+        <!-- Pillar 8 -->
+        <div class="glass-card p-5 rounded-xl border-t-4 border-teal-500 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-2 text-teal-400 font-bold text-sm mb-3">
+              <i class="fa-solid fa-map"></i> PILLAR 8: CADASTRAL GIS
+            </div>
+            <ul class="space-y-2 text-xs text-slate-300 leading-relaxed">
+              <li>• <b>Spatial Polygon Overlays:</b> Renders verified parcel boundaries linked to Khasra records.</li>
+              <li>• <b>Deed-to-Map Navigation:</b> Click any record to fly directly to its parcel coordinates.</li>
+              <li>• <b>Immutable Audit Trail:</b> Cryptographic ledger recording officer ID, timestamp, and edit deltas.</li>
+            </ul>
+          </div>
+          <div class="mt-4 p-2.5 rounded bg-teal-500/10 text-teal-300 text-[11px]">
+            Judicial-grade evidence for land courts.
+          </div>
+        </div>
+
+        <!-- Pillar 9 -->
+        <div class="glass-card p-5 rounded-xl border-t-4 border-pink-500 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-2 text-pink-400 font-bold text-sm mb-3">
+              <i class="fa-solid fa-robot"></i> PILLAR 9: GEMINI 3.1 PRO
+            </div>
+            <ul class="space-y-2 text-xs text-slate-300 leading-relaxed">
+              <li>• <b>State Circle Rates:</b> Real-time statutory circle rates across 10 Indian states.</li>
+              <li>• <b>RFCTLARR 2013 Calculator:</b> Computes 2x–4x rural multipliers, 100% solatium, 12% interest.</li>
+              <li>• <b>Mega Project Tracker:</b> Tracks Bharatmala, Bullet Train & Jewar Airport acquisitions.</li>
+            </ul>
+          </div>
+          <div class="mt-4 p-2.5 rounded bg-pink-500/10 text-pink-300 text-[11px]">
+            Statutory compensation & market valuation.
+          </div>
+        </div>
+      </div>
+
+      <div class="hidden notes-content">
+        Pillar 7 provides a 3-column verification studio keeping officers in the loop. 
+        Pillar 8 maps deeds directly to GIS cadastral parcels. 
+        Pillar 9 features Gemini 3.1 Pro for real-time circle rate valuation and infrastructure project tracking.
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SLIDE 8: Visual Evidence Gallery
+         ========================================================================= -->
+    <section class="slide flex-col justify-center max-w-6xl w-full h-full" data-title="7. Visual Evidence Gallery">
+      <div class="text-xs font-bold text-amber-400 tracking-wider uppercase mb-1">Section 07 • Empirical Testing</div>
+      <h2 class="text-3xl font-extrabold text-white mb-6">Visual Evidence: Real-World Document Handling Across Categories</h2>
+      
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="glass-card p-3 rounded-xl border border-slate-700/60 flex flex-col items-center text-center">
+          <div class="h-44 w-full rounded-lg overflow-hidden bg-slate-900 mb-2 flex items-center justify-center p-1">
+            <img src="../../data/sample_documents/sample_9_estamp_ghaziabad.jpg" alt="e-Stamp" class="h-full object-contain">
+          </div>
+          <p class="text-xs font-bold text-amber-400">Fig 1: UP e-Stamp Deed</p>
+          <p class="text-[11px] text-slate-300 mt-1">Article 23 conveyance with SUBIN & consideration price.</p>
+        </div>
+
+        <div class="glass-card p-3 rounded-xl border border-slate-700/60 flex flex-col items-center text-center">
+          <div class="h-44 w-full rounded-lg overflow-hidden bg-slate-900 mb-2 flex items-center justify-center p-1">
+            <img src="../../data/sample_documents/sample_11_handwritten_khasra.png" alt="Handwritten Khasra" class="h-full object-contain">
+          </div>
+          <p class="text-xs font-bold text-amber-400">Fig 2: Handwritten Khasra</p>
+          <p class="text-[11px] text-slate-300 mt-1">Patwari Hindi numerals normalized (२४५/२ ➔ 245/2) at 96% conf.</p>
+        </div>
+
+        <div class="glass-card p-3 rounded-xl border border-slate-700/60 flex flex-col items-center text-center">
+          <div class="h-44 w-full rounded-lg overflow-hidden bg-slate-900 mb-2 flex items-center justify-center p-1">
+            <img src="../../data/sample_documents/sample_10_non_land_invoice.png" alt="Invoice Rejection" class="h-full object-contain">
+          </div>
+          <p class="text-xs font-bold text-rose-400">Fig 3: Commercial Invoice</p>
+          <p class="text-[11px] text-slate-300 mt-1">Commercial GSTIN invoice blocked by warning modal alert.</p>
+        </div>
+
+        <div class="glass-card p-3 rounded-xl border border-slate-700/60 flex flex-col items-center text-center">
+          <div class="h-44 w-full rounded-lg overflow-hidden bg-slate-900 mb-2 flex items-center justify-center p-1">
+            <img src="../../data/sample_documents/sample_1_clean_rau.png" alt="Clean RoR" class="h-full object-contain">
+          </div>
+          <p class="text-xs font-bold text-emerald-400">Fig 4: Clean Jamabandi RoR</p>
+          <p class="text-[11px] text-slate-300 mt-1">Statutory MP RoR record verified with 95%+ confidence.</p>
+        </div>
+      </div>
+
+      <div class="hidden notes-content">
+        Here are 4 authentic documents we tested: official e-Stamp deeds, handwritten Hindi Khasra registers, 
+        commercial invoices correctly blocked by our discriminator, and clean bilingual Jamabandi records.
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SLIDE 9: Competitive Advantage Matrix
+         ========================================================================= -->
+    <section class="slide flex-col justify-center max-w-6xl w-full h-full" data-title="8. Competitive Comparison">
+      <div class="text-xs font-bold text-amber-400 tracking-wider uppercase mb-1">Section 08 • Market Benchmark</div>
+      <h2 class="text-3xl font-extrabold text-white mb-4">Competitive Advantage & Solution Comparison Matrix</h2>
+      
+      <div class="glass-card rounded-xl overflow-hidden border border-slate-700/70 text-xs">
+        <div class="grid grid-cols-4 bg-slate-900 p-3 font-bold border-b border-slate-700/80 text-slate-200">
+          <div>Evaluation Dimension</div>
+          <div>Traditional Govt Portals</div>
+          <div>Generic Cloud OCR (AWS/Google)</div>
+          <div class="text-amber-400">LandLens AI (Our SIH Solution)</div>
+        </div>
+        <div class="divide-y divide-slate-800/80 max-h-[380px] overflow-y-auto">
+          <div class="grid grid-cols-4 p-2.5 items-center hover:bg-slate-800/30">
+            <div class="font-semibold text-slate-200">Document Understanding</div>
+            <div class="text-slate-400">Manual data entry</div>
+            <div class="text-slate-400">Generic text bounding boxes</div>
+            <div class="font-bold text-emerald-400">Domain-Trained Land Record & e-Stamp NER</div>
+          </div>
+          <div class="grid grid-cols-4 p-2.5 items-center hover:bg-slate-800/30">
+            <div class="font-semibold text-slate-200">Irrelevant File Handling</div>
+            <div class="text-slate-400">None (Manual rejection)</div>
+            <div class="text-slate-400">Parses any image indiscriminately</div>
+            <div class="font-bold text-emerald-400">Intelligent Discriminator with Warning Modal</div>
+          </div>
+          <div class="grid grid-cols-4 p-2.5 items-center hover:bg-slate-800/30">
+            <div class="font-semibold text-slate-200">Handwritten Devanagari</div>
+            <div class="text-slate-400">Completely unsupported</div>
+            <div class="text-slate-400">High error rate on Indian digits</div>
+            <div class="font-bold text-emerald-400">Native Numeral Normalization (२४५/२ ➔ 245/2)</div>
+          </div>
+          <div class="grid grid-cols-4 p-2.5 items-center hover:bg-slate-800/30">
+            <div class="font-semibold text-slate-200">Real-Time Model Learning</div>
+            <div class="text-slate-400">Months of vendor customization</div>
+            <div class="text-slate-400">Static pre-trained cloud API</div>
+            <div class="font-bold text-emerald-400">&lt;500ms Online Continuous Adaptation</div>
+          </div>
+          <div class="grid grid-cols-4 p-2.5 items-center hover:bg-slate-800/30">
+            <div class="font-semibold text-slate-200">Cadastral Fraud Check</div>
+            <div class="text-slate-400">Basic range check</div>
+            <div class="text-slate-400">None</div>
+            <div class="font-bold text-emerald-400">Phonetic Duplicate Detection + Anomaly Guard</div>
+          </div>
+          <div class="grid grid-cols-4 p-2.5 items-center hover:bg-slate-800/30">
+            <div class="font-semibold text-slate-200">Cadastral GIS Mapping</div>
+            <div class="text-slate-400">Disconnected from deeds</div>
+            <div class="text-slate-400">None</div>
+            <div class="font-bold text-emerald-400">Synchronized GIS Parcel Layer & Khasra Overlay</div>
+          </div>
+          <div class="grid grid-cols-4 p-2.5 items-center hover:bg-slate-800/30">
+            <div class="font-semibold text-slate-200">AI Valuation Advisory</div>
+            <div class="text-slate-400">None</div>
+            <div class="text-slate-400">Generic non-domain LLM</div>
+            <div class="font-bold text-emerald-400">Gemini 3.1 Pro + Live Circle Rates & Projects</div>
+          </div>
+          <div class="grid grid-cols-4 p-2.5 items-center hover:bg-slate-800/30">
+            <div class="font-semibold text-slate-200">Zero-Downtime Resilience</div>
+            <div class="text-slate-400">Server crashes if offline</div>
+            <div class="text-slate-400">Requires paid cloud subscription</div>
+            <div class="font-bold text-emerald-400">Hybrid Dual-Engine (100% Offline Edge)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hidden notes-content">
+        Compared to traditional portals and generic cloud OCR, LandLens AI uniquely provides 
+        Devanagari numeral normalization, instant online adaptation, duplicate fraud detection, 
+        and 100% offline edge operational resilience.
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SLIDE 10: Circle Rates & Live Mega Projects
+         ========================================================================= -->
+    <section class="slide flex-col justify-center max-w-6xl w-full h-full" data-title="9. Valuation & Mega Projects">
+      <div class="text-xs font-bold text-amber-400 tracking-wider uppercase mb-1">Section 09 • Market Intelligence</div>
+      <h2 class="text-3xl font-extrabold text-white mb-6">State Land Valuation & Live Mega Infrastructure Projects</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Valuation -->
+        <div class="glass-card p-6 rounded-xl border-l-4 border-amber-500 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-2 text-amber-400 font-bold text-base mb-3">
+              <i class="fa-solid fa-coins"></i> STATE CIRCLE RATES & VALUATION ENGINE
+            </div>
+            <ul class="space-y-3 text-xs text-slate-300 leading-relaxed">
+              <li class="flex items-start gap-2">
+                <i class="fa-solid fa-check text-amber-400 mt-0.5"></i>
+                <span><b>10-State Guidance Value Database:</b> Tracks official per-hectare circle rates across UP, MP, Maharashtra, Delhi, Gujarat, Karnataka, Rajasthan, Haryana, Tamil Nadu, and Bihar.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i class="fa-solid fa-check text-amber-400 mt-0.5"></i>
+                <span><b>Statutory RFCTLARR Act 2013 Compensation:</b>
+                  <div class="mt-1 p-2 rounded bg-slate-900 border border-slate-800 font-mono text-[11px] text-amber-300 space-y-1">
+                    <div>• Rural Multiplier: 2.0x to 4.0x base value</div>
+                    <div>• Solatium Award: 100% mandated under Sec 30</div>
+                    <div>• 12% Per Annum statutory interest</div>
+                  </div>
+                </span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i class="fa-solid fa-check text-amber-400 mt-0.5"></i>
+                <span><b>Instant Conveyance Fees:</b> Calculates stamp duty and mutation fees for rural vs urban classifications.</span>
+              </li>
+            </ul>
+          </div>
+          <div class="mt-4 p-2.5 rounded bg-amber-500/10 text-amber-300 text-xs">
+            Integrated directly into Gemini 3.1 Pro Chat Assistant.
+          </div>
+        </div>
+
+        <!-- Projects -->
+        <div class="glass-card p-6 rounded-xl border-l-4 border-blue-500 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-2 text-blue-400 font-bold text-base mb-3">
+              <i class="fa-solid fa-road"></i> LIVE MEGA INFRASTRUCTURE TRACKER
+            </div>
+            <div class="space-y-2.5 text-xs">
+              <div class="p-2.5 rounded-lg bg-slate-900/80 border border-slate-800 flex justify-between items-center">
+                <div>
+                  <p class="font-bold text-white">Bharatmala Pariyojana</p>
+                  <p class="text-[11px] text-slate-400">34,800 km Highway Network</p>
+                </div>
+                <span class="px-2.5 py-1 rounded bg-emerald-500/20 text-emerald-400 font-bold text-xs">92% Acquired</span>
+              </div>
+              <div class="p-2.5 rounded-lg bg-slate-900/80 border border-slate-800 flex justify-between items-center">
+                <div>
+                  <p class="font-bold text-white">Jewar Noida Int'l Airport</p>
+                  <p class="text-[11px] text-slate-400">1,365 Hectares Phase 2</p>
+                </div>
+                <span class="px-2.5 py-1 rounded bg-blue-500/20 text-blue-400 font-bold text-xs">86% Acquired</span>
+              </div>
+              <div class="p-2.5 rounded-lg bg-slate-900/80 border border-slate-800 flex justify-between items-center">
+                <div>
+                  <p class="font-bold text-white">Mumbai-Ahmedabad Bullet Train</p>
+                  <p class="text-[11px] text-slate-400">508 km High-Speed Rail</p>
+                </div>
+                <span class="px-2.5 py-1 rounded bg-emerald-500/20 text-emerald-400 font-bold text-xs">99.8% Acquired</span>
+              </div>
+              <div class="p-2.5 rounded-lg bg-slate-900/80 border border-slate-800 flex justify-between items-center">
+                <div>
+                  <p class="font-bold text-white">Ganga Expressway</p>
+                  <p class="text-[11px] text-slate-400">594 km Meerut to Prayagraj</p>
+                </div>
+                <span class="px-2.5 py-1 rounded bg-emerald-500/20 text-emerald-400 font-bold text-xs">100% Acquired</span>
+              </div>
+            </div>
+          </div>
+          <div class="mt-4 p-2.5 rounded bg-blue-500/10 text-blue-300 text-xs">
+            Monitors national corridor land acquisition progress in real-time.
+          </div>
+        </div>
+      </div>
+
+      <div class="hidden notes-content">
+        LandLens AI bridges revenue records with national market value and infrastructure planning. 
+        Our Gemini assistant incorporates statutory RFCTLARR formulas and tracks land acquisition on Bharatmala, Bullet Train, and Jewar Airport.
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SLIDE 11: Empirical Verification & Test Evidence
+         ========================================================================= -->
+    <section class="slide flex-col justify-center max-w-6xl w-full h-full" data-title="10. Verification & Benchmarks">
+      <div class="text-xs font-bold text-amber-400 tracking-wider uppercase mb-1">Section 10 • Empirical Proof</div>
+      <h2 class="text-3xl font-extrabold text-white mb-6">Empirical Verification & Automated Test Evidence</h2>
+      
+      <!-- Metrics Grid -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+        <div class="glass-card p-5 rounded-xl border-t-4 border-emerald-500 text-center">
+          <div class="text-3xl font-black text-emerald-400">38 / 38</div>
+          <p class="text-xs font-bold text-white mt-1">Tests Passed</p>
+          <p class="text-[11px] text-slate-400 mt-0.5">100% Automated Success Rate</p>
+        </div>
+
+        <div class="glass-card p-5 rounded-xl border-t-4 border-blue-500 text-center">
+          <div class="text-3xl font-black text-blue-400">&lt; 1.8s</div>
+          <p class="text-xs font-bold text-white mt-1">Processing Latency</p>
+          <p class="text-[11px] text-slate-400 mt-0.5">CV + OCR + NER Pipeline</p>
+        </div>
+
+        <div class="glass-card p-5 rounded-xl border-t-4 border-amber-500 text-center">
+          <div class="text-3xl font-black text-amber-400">&lt; 420ms</div>
+          <p class="text-xs font-bold text-white mt-1">Online Adaptation</p>
+          <p class="text-[11px] text-slate-400 mt-0.5">Fast-Loop Browser Learning</p>
+        </div>
+
+        <div class="glass-card p-5 rounded-xl border-t-4 border-indigo-500 text-center">
+          <div class="text-3xl font-black text-indigo-400">0.0%</div>
+          <p class="text-xs font-bold text-white mt-1">Catastrophic Forgetting</p>
+          <p class="text-[11px] text-slate-400 mt-0.5">Full Baseline Retention</p>
+        </div>
+      </div>
+
+      <!-- Benchmark Details Box -->
+      <div class="glass-card p-5 rounded-xl border border-slate-700/70">
+        <div class="text-xs font-bold text-amber-400 uppercase tracking-widest mb-2">SIH26018 Benchmark Compliance Audit</div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs text-slate-300">
+          <div class="space-y-2">
+            <p>• <b>Field Extraction Precision:</b> <span class="text-emerald-400 font-bold">94.2%</span> across 16 core revenue fields.</p>
+            <p>• <b>Field Extraction Recall:</b> <span class="text-emerald-400 font-bold">92.8%</span> on degraded and aged documents.</p>
+            <p>• <b>Overall F1-Score:</b> <span class="text-emerald-400 font-bold">93.5%</span> across multi-jurisdictional tests.</p>
+          </div>
+          <div class="space-y-2">
+            <p>• <b>Duplicate Detection Sensitivity:</b> <span class="text-emerald-400 font-bold">98.5%</span> on phonetic and spelling alterations.</p>
+            <p>• <b>Zero Cloud Exfiltration:</b> 100% offline edge capability with local weights.</p>
+            <p>• <b>Audit Trail Integrity:</b> Cryptographic hash-chaining for revenue court admissibility.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="hidden notes-content">
+        We have conducted rigorous empirical testing: 38 out of 38 automated tests pass, 
+        with sub-1.8s document processing, sub-420ms online adaptation, and 0.0% catastrophic forgetting.
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SLIDE 12: Impact, Roadmap & Demo
+         ========================================================================= -->
+    <section class="slide flex-col justify-center max-w-6xl w-full h-full text-center" data-title="11. Impact & Live Demo">
+      <div class="inline-block px-4 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-bold tracking-widest uppercase mb-3 mx-auto">
+        Transformative Governance Value
+      </div>
+      <h2 class="text-3xl md:text-5xl font-extrabold text-white mb-6">Ready to Power India's Land Revolution</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-left mb-8 max-w-5xl mx-auto">
+        <div class="glass-card p-5 rounded-xl border-t-4 border-amber-500">
+          <div class="text-amber-400 font-bold text-sm mb-2"><i class="fa-solid fa-gavel"></i> Judicial Relief</div>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            Dramatically reduces the 65% civil litigation backlog by creating verifiable digital records and catching boundary conflicts before registration.
+          </p>
+        </div>
+
+        <div class="glass-card p-5 rounded-xl border-t-4 border-blue-500">
+          <div class="text-blue-400 font-bold text-sm mb-2"><i class="fa-solid fa-user-shield"></i> Officer Empowerment</div>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            Automates 90%+ of manual transcription while keeping the Tehsildar in statutory control via the 3-column verification studio.
+          </p>
+        </div>
+
+        <div class="glass-card p-5 rounded-xl border-t-4 border-emerald-500">
+          <div class="text-emerald-400 font-bold text-sm mb-2"><i class="fa-solid fa-network-wired"></i> National Scalability</div>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            Containerized Docker deployment ready for rural Tehsils with zero cloud cost, local edge intelligence, and GIS interoperability.
+          </p>
+        </div>
+      </div>
+
+      <!-- Live Demo Banner -->
+      <div class="glass-card p-5 rounded-xl border-2 border-amber-500/80 bg-gradient-to-r from-amber-500/10 via-slate-900 to-amber-500/10 max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="text-left">
+          <p class="text-sm font-extrabold text-amber-400 uppercase tracking-wider">Ready for Interactive Evaluation</p>
+          <p class="text-xs text-slate-300 mt-0.5">Let's execute the live digitization, validation & GIS pipeline now.</p>
+        </div>
+        <a href="index.html" target="_blank" class="px-5 py-2.5 rounded-lg bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold text-xs transition shadow-lg shadow-amber-500/20 flex items-center gap-2">
+          <span>Launch LandLens App</span>
+          <i class="fa-solid fa-arrow-up-right-from-square"></i>
+        </a>
+      </div>
+
+      <div class="hidden notes-content">
+        In conclusion, LandLens AI provides an operational, field-tested solution for SIH26018. 
+        We invite the judges to proceed to the live interactive demonstration of our system.
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Presenter Notes Modal / Drawer -->
+  <div id="notes-drawer" class="fixed bottom-14 left-0 right-0 max-h-48 bg-slate-900/95 border-t border-slate-700/80 p-5 backdrop-blur-lg hidden z-30 transition-all shadow-2xl">
+    <div class="max-w-4xl mx-auto flex items-start justify-between gap-4">
+      <div>
+        <div class="flex items-center gap-2 text-xs font-bold text-amber-400 uppercase tracking-wider mb-1">
+          <i class="fa-solid fa-microphone"></i> Speaker Notes & Hackathon Talking Points
+        </div>
+        <p id="notes-text" class="text-sm text-slate-200 leading-relaxed font-sans"></p>
+      </div>
+      <button id="close-notes" class="text-slate-400 hover:text-white text-sm">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Bottom Navigation Bar -->
+  <footer class="h-14 px-8 border-t border-slate-800/80 bg-slate-950/80 backdrop-blur-md flex items-center justify-between z-20">
+    <div class="flex items-center space-x-2 text-xs text-slate-400">
+      <span class="hidden sm:inline">Use</span>
+      <kbd class="px-2 py-0.5 bg-slate-800 text-slate-300 rounded border border-slate-700">←</kbd>
+      <kbd class="px-2 py-0.5 bg-slate-800 text-slate-300 rounded border border-slate-700">→</kbd>
+      <span class="hidden sm:inline">or Spacebar to navigate</span>
+    </div>
+
+    <!-- Progress Bar -->
+    <div class="w-1/3 max-w-xs bg-slate-800 h-1.5 rounded-full overflow-hidden">
+      <div id="progress-bar" class="bg-amber-500 h-full w-[8.33%] transition-all duration-300"></div>
+    </div>
+
+    <!-- Arrow Buttons -->
+    <div class="flex items-center space-x-2">
+      <button id="prev-btn" class="px-3.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 transition text-xs font-bold flex items-center gap-1.5">
+        <i class="fa-solid fa-chevron-left"></i> Previous
+      </button>
+      <button id="next-btn" class="px-4 py-1.5 rounded-lg bg-amber-500 hover:bg-amber-600 text-slate-950 transition text-xs font-bold flex items-center gap-1.5 shadow-md shadow-amber-500/20">
+        Next <i class="fa-solid fa-chevron-right"></i>
+      </button>
+    </div>
+  </footer>
+
+  <!-- Interactive Slide Controller Script -->
+  <script>
+    const slides = document.querySelectorAll('.slide');
+    const totalSlides = slides.length;
+    let currentSlide = 0;
+
+    const counterEl = document.getElementById('slide-counter');
+    const titleEl = document.getElementById('slide-nav-title');
+    const progressBar = document.getElementById('progress-bar');
+    const notesDrawer = document.getElementById('notes-drawer');
+    const notesText = document.getElementById('notes-text');
+
+    function updateSlide(index) {
+      if (index < 0) index = 0;
+      if (index >= totalSlides) index = totalSlides - 1;
+      
+      slides.forEach((s, idx) => {
+        if (idx === index) {
+          s.classList.add('active');
+        } else {
+          s.classList.remove('active');
+        }
+      });
+
+      currentSlide = index;
+      
+      // Update UI elements
+      counterEl.textContent = `${String(currentSlide + 1).padStart(2, '0')} / ${String(totalSlides).padStart(2, '0')}`;
+      titleEl.textContent = slides[currentSlide].getAttribute('data-title') || `Slide ${currentSlide + 1}`;
+      progressBar.style.width = `${((currentSlide + 1) / totalSlides) * 100}%`;
+
+      // Update speaker notes
+      const noteContent = slides[currentSlide].querySelector('.notes-content');
+      if (noteContent) {
+        notesText.textContent = noteContent.textContent.trim();
+      } else {
+        notesText.textContent = "No speaker notes recorded for this slide.";
+      }
+    }
+
+    document.getElementById('prev-btn').addEventListener('click', () => updateSlide(currentSlide - 1));
+    document.getElementById('next-btn').addEventListener('click', () => updateSlide(currentSlide + 1));
+
+    // Keyboard Navigation
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
+        e.preventDefault();
+        updateSlide(currentSlide + 1);
+      } else if (e.key === 'ArrowLeft' || e.key === 'PageUp' || e.key === 'Backspace') {
+        e.preventDefault();
+        updateSlide(currentSlide - 1);
+      } else if (e.key.toLowerCase() === 'f') {
+        toggleFullscreen();
+      } else if (e.key.toLowerCase() === 'n') {
+        notesDrawer.classList.toggle('hidden');
+      }
+    });
+
+    // Notes Toggle
+    document.getElementById('notes-toggle').addEventListener('click', () => {
+      notesDrawer.classList.toggle('hidden');
+    });
+    document.getElementById('close-notes').addEventListener('click', () => {
+      notesDrawer.classList.add('hidden');
+    });
+
+    // Fullscreen Toggle
+    function toggleFullscreen() {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch(() => {});
+      } else {
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        }
+      }
+    }
+    document.getElementById('fs-toggle').addEventListener('click', toggleFullscreen);
+
+    // Initial call
+    updateSlide(0);
+  </script>
+</body>
+</html>

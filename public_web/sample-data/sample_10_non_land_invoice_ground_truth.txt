@@ -1,0 +1,17 @@
+TAX INVOICE / बिल
+Invoice No : INV-2024-8891
+Date : 15/03/2024
+Bill To : Acme Enterprises Private Limited
+GSTIN : 07AAAAA0000A1Z5
+Shipping Address : Plot 45, Okhla Industrial Area Phase III, New Delhi 110020
+Description of Services : Enterprise Cloud Hosting and API Gateway Subscription
+HSN/SAC Code : 998313
+Quantity : 1
+Unit Price (INR) : 4,500.00
+Subtotal : 4,500.00
+CGST (9.0%) : 405.00
+SGST (9.0%) : 405.00
+Total Amount Due : 5,310.00
+Payment Terms : Net 30 Days
+Due Date : 15/04/2024
+Authorized Signatory : Accounts Manager, Acme Enterprises

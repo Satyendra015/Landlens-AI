@@ -1,0 +1,24 @@
+{
+  "filename": "sample_3_mohan_mangliya.png",
+  "title": "MADHYA PRADESH - SANWER JAMABANDI",
+  "fields": {
+    "owner_name": "Mohan Singh",
+    "father_name": "Deepak Chand",
+    "khasra_number": "102/3",
+    "khata_number": "67",
+    "survey_number": "SN-119",
+    "plot_number": "P-44",
+    "village": "Mangliya",
+    "tehsil": "Sanwer",
+    "district": "Indore",
+    "state": "Madhya Pradesh",
+    "land_area": "0.85 Hectare",
+    "land_type": "Agricultural (Irrigated)",
+    "registration_number": "MP-IND-2024-1029",
+    "mutation_number": "MUT-889",
+    "document_number": "DOC-JAMABANDI-03",
+    "date": "05/01/2024"
+  },
+  "expected_confidence": "HIGH",
+  "expected_status": "verified"
+}

@@ -1,0 +1,16 @@
+Owner Name / मालिक का नाम : Rajesh Gupta
+Father's Name / पिता का नाम : Ganga Ram
+Khasra Number / खसरा नं. : 89/1
+Khata Number / खाता नं. : 145
+Survey Number / सर्वे नं. : SN-310
+Plot Number / प्लॉट नं. : P-22
+Village / ग्राम : Pindra
+Tehsil / तहसील : Pindra
+District / जिला : Varanasi
+State / राज्य : Uttar Pradesh
+Land Area / रकबा : 2.80 Hectare
+Land Type / भूमि प्रकार : Agricultural (Irrigated)
+Registration No / पंजीकरण क्रमांक : UP-VAR-2024-3310
+Mutation No / नामांतरण क्रमांक : MUT-904
+Document No / दस्तावेज संख्या : DOC-ROR-06
+Date / दिनांक : 12/02/2024

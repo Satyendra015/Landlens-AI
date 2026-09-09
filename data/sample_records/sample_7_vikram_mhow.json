@@ -1,0 +1,24 @@
+{
+  "filename": "sample_7_vikram_mhow.png",
+  "title": "MADHYA PRADESH - MHOW REVENUE REGISTER",
+  "fields": {
+    "owner_name": "Vikram Rathore",
+    "father_name": "Pratap Singh",
+    "khasra_number": "144/3",
+    "khata_number": "88",
+    "survey_number": "SN-772",
+    "plot_number": "P-31",
+    "village": "Mhow",
+    "tehsil": "Mhow",
+    "district": "Indore",
+    "state": "Madhya Pradesh",
+    "land_area": "4.20 Hectare",
+    "land_type": "Agricultural (Non-Irrigated)",
+    "registration_number": "MP-IND-2023-1120",
+    "mutation_number": "MUT-219",
+    "document_number": "DOC-ROR-07",
+    "date": "29/07/2023"
+  },
+  "expected_confidence": "HIGH",
+  "expected_status": "verified"
+}

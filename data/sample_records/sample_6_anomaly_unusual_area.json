@@ -1,0 +1,24 @@
+{
+  "filename": "sample_6_anomaly_unusual_area.png",
+  "title": "LAND REGISTRY / \u092d\u0942\u092e\u093f \u092a\u0902\u091c\u0940\u092f\u0928",
+  "faded": false,
+  "fields": {
+    "owner_name": "Kailash Chand",
+    "father_name": "Deepak Chand",
+    "khasra_number": "409/1",
+    "khata_number": "601",
+    "survey_number": "SN-339",
+    "plot_number": "P-88",
+    "village": "Kanadia",
+    "tehsil": "Kanadia",
+    "district": "Indore",
+    "state": "Madhya Pradesh",
+    "land_area": "150.0 Hectare",
+    "land_type": "Commercial / Mixed",
+    "registration_number": "MP-IND-2023-5512",
+    "mutation_number": "MUT-761",
+    "document_number": "DOC-REG-06",
+    "date": "19/09/2023"
+  },
+  "description": "Record with unusual land area (150 Ha) triggering Range Anomaly Warning"
+}

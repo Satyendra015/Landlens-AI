@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  landlens-app:
+    build: .
+    container_name: landlens-ai-service
+    ports:
+      - "8000:8000"
+    environment:
+      - ENVIRONMENT=production
+      - DATABASE_URL=sqlite:///./landlens.db
+      - SECRET_KEY=landlens-hackathon-secret-key-2026
+      - ACCESS_TOKEN_EXPIRE_MINUTES=480
+      - UPLOAD_DIR=./uploads
+    volumes:
+      - ./uploads:/app/uploads
+      - ./data:/app/data
+      - ./landlens.db:/app/landlens.db
+    restart: unless-stopped

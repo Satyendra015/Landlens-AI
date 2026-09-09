@@ -1,0 +1,16 @@
+Owner Name / मालिक का नाम : Sunil Malviya
+Father's Name / पिता का नाम : Shiv Dayal
+Khasra Number / खसरा नं. : 205/4
+Khata Number / खाता नं. : 310
+Survey Number / सर्वे नं. : SN-501
+Plot Number / प्लॉट नं. : P-14
+Village / ग्राम : Sanwer
+Tehsil / तहसील : Sanwer
+District / जिला : Indore
+State / राज्य : Madhya Pradesh
+Land Area / रकबा : 1.90 Hectare
+Land Type / भूमि प्रकार : Agricultural (Irrigated)
+Registration No / पंजीकरण क्रमांक : MP-IND-2024-5501
+Mutation No / नामांतरण क्रमांक : MUT-633
+Document No / दस्तावेज संख्या : DOC-ROR-08
+Date / दिनांक : 19/03/2024
